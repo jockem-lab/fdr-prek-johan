@@ -30,13 +30,13 @@ add_filter('esc_html', function ($safe_text, $text) {
     return $safe_text;
 }, 10, 2);
 
-add_action(
-    'fasad_bridge_synchronize_complete',
-    function () {
-        $common = new Common();
-        $common->saveJsonFiles();
-    }
-);
+// add_action(
+//     'fasad_bridge_synchronize_complete',
+//     function () {
+//         $common = new Common();
+//         $common->saveJsonFiles();
+//     }
+// );
 add_filter('prekweb_addOptionsPage', function ($addPage, $optionsPage) {
     if (isset($optionsPage['json']) && $optionsPage['json'] === 'site-settings.json') {
         return false;

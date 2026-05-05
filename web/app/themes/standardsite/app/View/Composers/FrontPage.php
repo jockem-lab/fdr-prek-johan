@@ -15,10 +15,22 @@ class FrontPage extends PrekComposer
         $query = new \WP_Query([
             'post_type'      => 'fasad_listing',
             'post_status'    => 'publish',
-            'posts_per_page' => 7,
+            'posts_per_page' => 10,
             'orderby'        => 'meta_value',
             'meta_key'       => '_fasad_firstPublished',
             'order'          => 'DESC',
+            'meta_query'     => [
+                'relation' => 'OR',
+                [
+                    'key'     => '_fasad_sold',
+                    'compare' => 'NOT EXISTS',
+                ],
+                [
+                    'key'     => '_fasad_sold',
+                    'value'   => '1',
+                    'compare' => '!=',
+                ],
+            ],
         ]);
 
         if ($query->have_posts()) {
@@ -39,16 +51,24 @@ class FrontPage extends PrekComposer
                     $price = number_format($price, 0, ',', ' ') . ' kr';
                 }
 
-                // Hämta bilder
+                // Hämta bilder — alla, inte bara första
                 $images_raw = get_post_meta($post_id, '_fasad_images', true);
                 $images_s1 = $images_raw ? @unserialize($images_raw) : [];
                 $images = is_string($images_s1) ? @unserialize($images_s1) : $images_s1;
-                $image = '';
-                if (is_array($images) && !empty($images[0]->variants)) {
-                    foreach ($images[0]->variants as $v) {
-                        if (($v->type ?? '') === 'large') { $image = $v->path; break; }
+                $image_list = [];
+                if (is_array($images)) {
+                    foreach ($images as $img) {
+                        if (!empty($img->variants)) {
+                            foreach ($img->variants as $v) {
+                                if (($v->type ?? '') === 'large') {
+                                    $image_list[] = $v->path;
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
+                $image = $image_list[0] ?? '';
 
                 // Hämta fakta
                 $size_raw = get_post_meta($post_id, '_fasad_size', true);
@@ -69,9 +89,62 @@ class FrontPage extends PrekComposer
                 $type_obj = $type_raw ? @unserialize($type_raw) : null;
                 $type = $type_obj->alias ?? '';
 
-                $status_raw = get_post_meta($post_id, '_fasad_status', true);
-                $status = $status_raw ? @unserialize($status_raw) : null;
-                $status_alias = $status->alias ?? '';
+                // Status-logik: Visning DD/M, FÖRHANDSVISNING, eller tom
+                $status_alias = '';
+
+                // 1. Kolla showings — kommande visning?
+                $showings_raw = get_post_meta($post_id, '_fasad_showings', true);
+                $showings = $showings_raw ? @unserialize($showings_raw) : [];
+                if (is_array($showings) && !empty($showings)) {
+                    $now = time();
+                    $upcoming = null;
+                    foreach ($showings as $show) {
+                        if (!empty($show->startDate)) {
+                            $ts = strtotime($show->startDate);
+                            if ($ts && $ts > $now && ($upcoming === null || $ts < $upcoming)) {
+                                $upcoming = $ts;
+                            }
+                        }
+                    }
+                    if ($upcoming) {
+                        $status_alias = 'VISNING ' . date('j/n', $upcoming);
+                    }
+                }
+
+                // 2. Annars: förhandsvisning?
+                if (!$status_alias) {
+                    $preview_raw = get_post_meta($post_id, '_fasad_preview', true);
+                    $preview = $preview_raw ? @unserialize($preview_raw) : null;
+                    if (is_object($preview) && !empty($preview->activated)) {
+                        $status_alias = 'FÖRHANDSVISNING';
+                    }
+                }
+
+                // 3. Bids — budgivning pågår?
+                if (!$status_alias) {
+                    $bids_raw = get_post_meta($post_id, '_fasad_bids', true);
+                    $bids = $bids_raw ? @unserialize($bids_raw) : [];
+                    if (is_array($bids) && !empty($bids)) {
+                        $status_alias = 'BUDGIVNING PÅGÅR';
+                    }
+                }
+
+                // 4. Fallback: använd activityCategory.alias (TILL SALU, SÅLD osv)
+                if (!$status_alias) {
+                    $cat_raw = get_post_meta($post_id, '_fasad_activityCategory', true);
+                    $cat = $cat_raw ? @unserialize($cat_raw) : null;
+                    if (is_object($cat) && !empty($cat->alias)) {
+                        $alias = $cat->alias;
+                        // Mappa till kortare svenska statusar
+                        if (stripos($alias, 'försäljning') !== false) {
+                            $status_alias = 'TILL SALU';
+                        } elseif (stripos($alias, 'såld') !== false) {
+                            $status_alias = 'SÅLD';
+                        } else {
+                            $status_alias = mb_strtoupper($alias);
+                        }
+                    }
+                }
 
                 $listings[] = (object)[
                     'id'      => $post_id,
@@ -82,6 +155,7 @@ class FrontPage extends PrekComposer
                     'rooms'   => $rooms,
                     'area'    => $area,
                     'image'   => $image,
+                    'images'  => $image_list,
                     'status'  => $status_alias,
                 ];
             }

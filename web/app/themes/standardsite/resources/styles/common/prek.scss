@@ -2213,14 +2213,14 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 }
 .site-header {
   background: #fff !important;
-  border-bottom: 0.5px solid var(--bg-warm) !important;
+  border-bottom: none !important;
 }
 .site-footer {
   background: var(--bg-dark) !important;
 }
 .footer-logo {
   font-family: var(--font-body) !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
   letter-spacing: 0.18em !important;
 }
 .btn-primary, a.btn-primary {
@@ -3961,7 +3961,7 @@ html body.admin-bar {
   top: 0; left: 0; right: 0;
   z-index: 100;
   background: var(--bg-light);
-  border-bottom: 0.5px solid var(--bg-warm);
+  border-bottom: none;
   height: 64px;
 }
 .fdr-header-inner {
@@ -4169,109 +4169,25 @@ html body.admin-bar {
 #app { padding-top: 64px !important; }
 
 /* ── FDR Footer ── */
-.fdr-footer {
-  background: #1a1a1a;
-  color: rgba(255,255,255,0.6);
-  font-family: var(--font-body);
-}
-.fdr-footer-inner {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 80px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 40px;
-}
-.fdr-footer-logo {
-  display: block;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-  margin-bottom: 32px;
-}
-.fdr-footer-adress p,
-.fdr-footer-adress a {
-  font-size: 13px;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  display: block;
-}
-.fdr-footer-adress a:hover { color: #fff; }
-.fdr-footer-social {
-  display: flex;
-  gap: 20px;
-  margin-top: 24px;
-}
-.fdr-footer-social a {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: rgba(255,255,255,0.4);
-  transition: color 0.2s;
-}
-.fdr-footer-social a:hover { color: #fff; }
-.fdr-footer-col h4 {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 20px;
-}
-.fdr-footer-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.fdr-footer-nav ul li {
-  margin-bottom: 12px;
-}
-.fdr-footer-nav ul li a {
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: color 0.2s;
-}
-.fdr-footer-nav ul li a:hover { color: #fff; }
-.fdr-footer-kontakt a {
-  display: block;
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  margin-bottom: 10px;
-  transition: color 0.2s;
-}
-.fdr-footer-kontakt a:hover { color: #fff; }
-.fdr-footer-bottom {
-  border-top: 0.5px solid rgba(255,255,255,0.08);
-  max-width: 100%;
-  padding: 20px 40px;
-  text-align: center;
-  font-size: 11px;
-  color: rgba(255,255,255,0.25);
-  letter-spacing: 0.06em;
-}
-@media (max-width: 768px) {
-  .fdr-footer-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 48px 24px;
-  }
-  .fdr-footer-bottom { padding: 20px 24px; }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* FDR Footer override */
-.fdr-footer,
-footer.fdr-footer {
-  background: #1a1a1a !important;
-  color: rgba(255,255,255,0.6) !important;
-}
+
 
 /* ── FDR Objektkort ── */
 .fdr-objekt-kort {
@@ -4850,7 +4766,7 @@ h1, h2, h3, h4, h5 {
 /* Header */
 .fdr-header {
   background: #fff !important;
-  border-bottom: 1px solid #e8e8e8 !important;
+  border-bottom: none !important;
 }
 .fdr-logo {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
@@ -4931,20 +4847,9 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Footer */
-.fdr-footer,
-footer.fdr-footer {
-  background: #000 !important;
-}
-.fdr-footer-logo {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.15em !important;
-}
-.fdr-footer-col h4 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  letter-spacing: 0.12em !important;
-}
+
+
+
 
 /* Team */
 .fdr-team-namn {
@@ -5140,15 +5045,7 @@ footer.fdr-footer {
   max-width: 640px;
   margin: 0 auto 48px;
 }
-.em-sektion-rubrik {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: #000;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #000;
-}
+
 .em-visning-rad {
   display: flex;
   gap: 32px;
@@ -5223,49 +5120,10 @@ footer.fdr-footer {
    ═══════════════════════════════════ */
 
 /* Splash */
-#em-splash {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.8s ease;
-}
-#em-splash.em-splash--exit {
-  opacity: 0;
-  pointer-events: none;
-}
-#em-splash-logo {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-#em-splash-logo.em-splash-logo--visible {
-  opacity: 1;
-}
-#em-splash-svg {
-  width: clamp(160px, 20vw, 280px);
-  filter: invert(1);
-}
-#em-splash-tagline {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: clamp(11px, 1.2vw, 16px);
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  color: #fff;
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  white-space: nowrap;
-}
-#em-splash-tagline.em-splash-tagline--visible {
-  opacity: 0.7;
-  transform: translateX(0);
-}
+
+
+
+
 
 /* Hero */
 .em-hero {
@@ -5296,97 +5154,20 @@ footer.fdr-footer {
 }
 
 /* Sektioner */
-.em-sektioner {
-  background: #fff;
-}
-.em-sektion {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 80vh;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.em-sektion.em-sektion--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.em-sektion--reverse {
-  direction: rtl;
-}
-.em-sektion--reverse > * {
-  direction: ltr;
-}
-.em-sektion-bild {
-  overflow: hidden;
-}
-.em-sektion-bild img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.8s ease;
-}
-.em-sektion:hover .em-sektion-bild img {
-  transform: scale(1.03);
-}
-.em-sektion-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px 80px;
-}
-.em-sektion-eyebrow {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: #000;
-  margin-bottom: 12px;
-}
-.em-sektion-rubrik {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: clamp(36px, 5vw, 72px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #000;
-  line-height: 1;
-  margin-bottom: 24px;
-}
-.em-sektion-beskrivning {
-  font-size: 14px;
-  line-height: 1.8;
-  color: #666;
-  max-width: 420px;
-  margin-bottom: 40px;
-}
-.em-sektion-btn {
-  display: inline-block;
-  border: 1px solid #000;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  padding: 14px 32px;
-  color: #000;
-  text-decoration: none;
-  transition: all 0.2s;
-  align-self: flex-start;
-}
-.em-sektion-btn:hover {
-  background: #000;
-  color: #fff;
-}
-@media (max-width: 900px) {
-  .em-sektion {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .em-sektion--reverse { direction: ltr; }
-  .em-sektion-bild { height: 60vw; }
-  .em-sektion-text { padding: 48px 32px; }
-  .em-sektion-rubrik { font-size: clamp(32px, 8vw, 52px); }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ── ETT MÄKLERI Header FINAL ── */
@@ -5453,85 +5234,15 @@ footer.fdr-footer {
 }
 
 /* ── SLUTGILTIG OVERRIDE ── */
-header#site-header.fdr-header {
-  background: transparent !important;
-  border: none !important;
-  height: 56px !important;
-  top: 0 !important;
-}
-header#site-header.fdr-header.fdr-header--scrolled {
-  background: #fff !important;
-}
-header#site-header .fdr-header-inner {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 0 40px !important;
-}
-header#site-header .fdr-logo {
-  position: static !important;
-  transform: none !important;
-  left: auto !important;
-  color: #fff !important;
-  font-size: 13px !important;
-  letter-spacing: 0.15em !important;
-  order: 1 !important;
-}
-header#site-header.fdr-header--scrolled .fdr-logo { color: #000 !important; }
-header#site-header .fdr-meny-btn { color: #fff !important; order: 2 !important; }
-header#site-header.fdr-header--scrolled .fdr-meny-btn { color: #000 !important; }
+
+
+
+
+
+
+
 #app { padding-top: 0 !important; }
 body { padding-top: 0 !important; }
-
-/* ── SPLASH + HERO + MENU FIX ── */
-#em-splash-logo {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 12px !important;
-  opacity: 0 !important;
-  transition: opacity 0.8s ease !important;
-}
-#em-splash-logo.em-splash-logo--visible {
-  opacity: 1 !important;
-}
-#em-splash-text {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: clamp(32px, 5vw, 64px) !important;
-  font-weight: 300 !important;
-  letter-spacing: 0.3em !important;
-  color: #fff !important;
-  text-align: center !important;
-}
-#em-splash-tagline {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: clamp(10px, 1vw, 13px) !important;
-  font-weight: 300 !important;
-  letter-spacing: 0.3em !important;
-  color: rgba(255,255,255,0.5) !important;
-  text-align: center !important;
-  opacity: 0 !important;
-  transition: opacity 0.6s ease !important;
-  transform: none !important;
-}
-#em-splash-tagline.em-splash-tagline--visible {
-  opacity: 1 !important;
-}
-
-/* Hero — full height, ingen padding-top */
-.em-hero {
-  height: 100vh !important;
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* Meny — alltid synlig och klickbar på hero */
-header#site-header.fdr-header {
-  z-index: 9000 !important;
-}
-.fdr-menu-overlay {
-  z-index: 9500 !important;
-}
 
 /* ── SLUTGILTIG SPLASH + HERO + APP FIX ── */
 #app {
@@ -5543,24 +5254,9 @@ body {
   margin-top: 0 !important;
 }
 /* Splash centrerad */
-#em-splash {
-  align-items: center !important;
-  justify-content: center !important;
-}
-#em-splash-logo {
-  align-items: center !important;
-  flex-direction: column !important;
-  gap: 16px !important;
-}
-#em-splash-text {
-  font-size: clamp(24px, 3.5vw, 48px) !important;
-  letter-spacing: 0.25em !important;
-}
-#em-splash-tagline {
-  font-size: 11px !important;
-  letter-spacing: 0.25em !important;
-}
-/* Hero täcker hela skärmen utan offset */
+
+
+
 .em-hero {
   height: 100vh !important;
   margin-top: 0 !important;
@@ -5568,145 +5264,8 @@ body {
   position: relative !important;
 }
 /* Header alltid ovanpå allt */
-header#site-header.fdr-header {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 9000 !important;
-  height: 56px !important;
-  pointer-events: all !important;
-}
-header#site-header.fdr-header * {
-  pointer-events: all !important;
-}
 
-/* ── SPLASH ANIMATION STEG 2 ── */
-#em-splash-logo {
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 20px !important;
-  position: relative !important;
-  transition: opacity 0.8s ease, transform 0.8s ease !important;
-}
-#em-splash-logo.em-splash-logo--left {
-  transform: translateX(-20vw) !important;
-}
-#em-splash-text {
-  font-size: clamp(18px, 2.5vw, 36px) !important;
-  letter-spacing: 0.2em !important;
-  font-weight: 300 !important;
-  white-space: nowrap !important;
-}
-#em-splash-tagline {
-  font-size: clamp(9px, 1vw, 13px) !important;
-  letter-spacing: 0.2em !important;
-  font-weight: 700 !important;
-  white-space: nowrap !important;
-  opacity: 0 !important;
-  transition: opacity 0.6s ease !important;
-}
-#em-splash-tagline.em-splash-tagline--visible {
-  opacity: 0.7 !important;
-}
 
-/* ── SPLASH STEG 2 — logotyp till nav ── */
-#em-splash-logo {
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 20px !important;
-  opacity: 0 !important;
-  transition: opacity 0.8s ease, top 0.8s ease, left 0.8s ease, transform 0.8s ease !important;
-}
-#em-splash-logo.em-splash-logo--visible {
-  opacity: 1 !important;
-}
-#em-splash-logo.em-splash-logo--nav {
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(calc(-50vw + 40px + 50%), calc(-50vh + 28px + 50%)) !important;
-}
-#em-splash-text {
-  font-size: clamp(22px, 3vw, 42px) !important;
-  letter-spacing: 0.2em !important;
-  font-weight: 300 !important;
-  white-space: nowrap !important;
-  color: #fff !important;
-  transition: font-size 0.8s ease !important;
-}
-#em-splash-logo.em-splash-logo--nav #em-splash-text {
-  font-size: 13px !important;
-  letter-spacing: 0.15em !important;
-}
-#em-splash-tagline {
-  font-size: 13px !important;
-  letter-spacing: 0.2em !important;
-  font-weight: 700 !important;
-  white-space: nowrap !important;
-  opacity: 0 !important;
-  color: rgba(255,255,255,0.7) !important;
-  transition: opacity 0.6s ease !important;
-}
-#em-splash-logo.em-splash-logo--nav #em-splash-tagline {
-  font-size: 13px !important;
-}
-#em-splash-tagline.em-splash-tagline--visible {
-  opacity: 0.7 !important;
-}
-
-/* ── SPLASH TEXT STORLEK FIX ── */
-#em-splash-logo.em-splash-logo--nav #em-splash-text,
-#em-splash-logo.em-splash-logo--nav #em-splash-tagline {
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.15em !important;
-}
-
-/* ── SPLASH FINAL ── */
-#em-splash-logo {
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 16px !important;
-  opacity: 0 !important;
-  transition: opacity 0.8s ease, top 0.9s cubic-bezier(0.4,0,0.2,1), left 0.9s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1) !important;
-}
-#em-splash-logo.em-splash-logo--visible {
-  opacity: 1 !important;
-}
-#em-splash-logo.em-splash-logo--nav {
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(calc(-50vw + 40px + 50%), calc(-50vh + 28px + 50%)) !important;
-}
-#em-splash-text {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.2em !important;
-  color: #fff !important;
-  white-space: nowrap !important;
-}
-#em-splash-tagline {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.2em !important;
-  color: rgba(255,255,255,0.7) !important;
-  white-space: nowrap !important;
-  opacity: 0 !important;
-  transition: opacity 0.6s ease !important;
-}
-#em-splash-tagline.em-splash-tagline--visible {
-  opacity: 0.7 !important;
-}
 
 /* ── OBJEKTLISTA ── */
 .em-objekt-hero {
@@ -5733,7 +5292,7 @@ header#site-header.fdr-header * {
   display: flex;
   gap: 0;
   padding: 0 40px;
-  border-bottom: 0.5px solid #e8e8e8;
+  border-bottom: none;
   background: #fff;
 }
 .em-filter-knapp {
@@ -5788,24 +5347,9 @@ header#site-header.fdr-header * {
   transition: opacity 0.5s ease;
 }
 .em-objekt-bild.active { opacity: 1; }
-.em-karusell-prev, .em-karusell-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.85);
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  color: #000;
-}
-.em-karusell-prev { left: 10px; }
-.em-karusell-next { right: 10px; }
+
+
+
 .em-objekt-status {
   position: absolute;
   top: 12px;
@@ -5857,4 +5401,2385 @@ header#site-header.fdr-header * {
   .em-objekt-grid { grid-template-columns: 1fr !important; }
   .em-objekt-innehall { padding: 24px 16px !important; }
   .em-objekt-filter { padding: 0 16px !important; overflow-x: auto; }
+}
+
+
+/* Team */
+
+
+/* ── HEADER SVART PÅ UNDERSIDOR ── */
+
+
+
+
+/* ── LAYOUT ALIGNMENT ── */
+
+/* ── MENY OVERLAY FIX ── */
+.fdr-menu-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9500 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  background: rgba(0,0,0,0.5) !important;
+}
+.fdr-menu-overlay.active {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+.fdr-menu-panel {
+  position: relative !important;
+  width: 360px !important;
+  max-width: 90vw !important;
+  height: 100% !important;
+  background: #fff !important;
+  transform: translateX(100%) !important;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+  overflow-y: auto !important;
+  padding: 48px 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.fdr-menu-overlay.active .fdr-menu-panel {
+  transform: translateX(0) !important;
+}
+
+/* ── SVENSKA TECKEN I TEXT-TRANSFORM ── */
+
+/* ── SVENSKA TECKEN I TEXT-TRANSFORM ── */
+
+/* ── HEADER TYPSNITT FIX ── */
+
+
+/* ── LOGOTYP SVG ── */
+.fdr-logo {
+  display: flex !important;
+  align-items: center !important;
+  position: static !important;
+  transform: none !important;
+  left: auto !important;
+}
+.fdr-logo-svg {
+  height: 16px !important;
+  width: auto !important;
+  display: block !important;
+  filter: invert(0) !important;
+}
+/* Vit logotyp på hero (startsidan) */
+.fdr-header:not(.fdr-header--scrolled) .fdr-logo-svg,
+
+/* Svart logotyp på undersidor och scrollad header */
+
+/* MENY-knapp typsnitt */
+.fdr-meny-btn {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.18em !important;
+}
+
+/* ── HEADER FINAL FIX ── */
+.fdr-meny-btn {
+  font-weight: 700 !important;
+  color: #000 !important;
+}
+
+.fdr-logo-svg {
+  height: 16px !important;
+  filter: invert(0) !important;
+}
+
+
+/* ── LOGOTYP SVART PÅ UNDERSIDOR ── */
+
+
+
+
+/* ── MENY FET + LOGO SVG FIX ── */
+
+
+
+/* Logo SVG synlig på undersidor */
+
+
+
+/* ── MENY OVERLAY NY DESIGN ── */
+.fdr-menu-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9500 !important;
+  display: flex !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.4s ease !important;
+}
+.fdr-menu-overlay.active {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+.fdr-menu-bg {
+  flex: 1 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  position: relative !important;
+}
+.fdr-menu-bg::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(242, 242, 242, 0.7) !important;
+}
+.fdr-menu-panel {
+  width: 50% !important;
+  max-width: 640px !important;
+  background: #F2F2F2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 40px 64px !important;
+  position: relative !important;
+  transform: translateX(0) !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+}
+.fdr-menu-close {
+  position: absolute !important;
+  top: 32px !important;
+  right: 40px !important;
+  background: none !important;
+  border: none !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+  color: #000 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+.fdr-menu-nav {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  margin-top: 80px !important;
+  flex: 1 !important;
+}
+.fdr-menu-nav a {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: clamp(32px, 4vw, 52px) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+  color: #000 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  padding: 8px 0 !important;
+  transition: opacity 0.2s !important;
+  border-bottom: none !important;
+}
+.fdr-menu-nav a:hover { opacity: 0.5 !important; }
+.fdr-menu-footer-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  padding-top: 40px !important;
+  border-top: 0.5px solid #ccc !important;
+  margin-top: 40px !important;
+}
+.fdr-menu-footer-links a {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  color: #000 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  transition: opacity 0.2s !important;
+}
+.fdr-menu-footer-links a:hover { opacity: 0.5 !important; }
+/* Logo + MENY fade transition */
+.fdr-logo-svg, .fdr-meny-btn {
+  transition: opacity 0.3s ease !important;
+}
+@media(max-width: 768px) {
+  .fdr-menu-bg { display: none !important; }
+  .fdr-menu-panel { width: 100% !important; max-width: 100% !important; padding: 40px 32px !important; }
+}
+
+/* ── OBJEKTLISTA SVART TEMA ── */
+body.page-id-8 {
+  background: #000 !important;
+}
+body.page-id-8 #app {
+  background: #000 !important;
+}
+
+
+.em-filter-knapp {
+  background: none !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  color: #666 !important;
+  cursor: pointer !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  padding: 16px 16px !important;
+  text-transform: uppercase !important;
+  transition: all 0.2s !important;
+  margin-bottom: -0.5px !important;
+}
+.em-filter-knapp:hover { color: #fff !important; }
+.em-filter-knapp.active {
+  color: #fff !important;
+  border-bottom-color: #fff !important;
+}
+.em-objekt-innehall {
+  background: #000 !important;
+  padding: 0 !important;
+}
+.em-objekt-grid {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2px !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 2px !important;
+}
+.em-objekt-kort a {
+  color: #fff !important;
+}
+.em-objekt-bild-wrap {
+  aspect-ratio: 4/3 !important;
+  margin-bottom: 0 !important;
+}
+.em-objekt-info {
+  padding: 12px 4px 24px !important;
+  background: #000 !important;
+}
+.em-objekt-rad-huvud {
+  margin-bottom: 2px !important;
+}
+.em-objekt-adress {
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+.em-objekt-omrade {
+  color: #fff !important;
+  font-size: 11px !important;
+}
+.em-objekt-rad-fakta {
+  color: #888 !important;
+  font-size: 11px !important;
+}
+.em-objekt-status {
+  background: #000 !important;
+  color: #fff !important;
+  border: none !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  padding: 6px 10px !important;
+}
+.em-status--visning { background: #000 !important; }
+.em-status--tillsalu { background: #1a47b8 !important; }
+.em-status--kommande { background: #000 !important; }
+.em-status--budgivning { background: #000 !important; }
+.em-status--sald { background: #000 !important; }
+
+
+/* ── FOOTER NY DESIGN ── */
+footer
+
+
+
+
+
+
+
+
+
+
+
+
+/* ── HEADER MIX-BLEND-MODE ── */
+
+
+/* Undersidor — vit bakgrund vid scroll */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ── SPLASH ── */
+
+
+
+
+/* ── SPLASH TAGLINE ── */
+
+
+
+/* ── SPLASH TAGLINE TWEAK ── */
+
+
+
+/* ── TAGLINE STORLEK ── */
+
+/* ── TAGLINE ── */
+
+
+
+/* ── SPLASH STORLEK MATCH ── */
+
+
+
+
+/* ── SPLASH GAP + STORLEK ── */
+
+
+
+
+
+/* ── SPLASH PAIR FINAL ── */
+
+
+
+
+
+
+
+
+/* ── SPLASH STORLEK FIX ── */
+
+
+
+/* ── SPLASH STORLEK FIX v2 ── */
+
+
+
+/* ── TAGLINE ── */
+
+/* ── TAGLINE STÖRRE ── */
+
+
+
+/* ── TAGLINE JUSTERING ── */
+
+
+/* ── TAGLINE FINAL ── */
+
+
+
+/* ── HEADER BLEND MODE ── */
+
+
+
+/* ── HEADER BLEND SCROLL ── */
+
+
+/* ── HEADER BLEND BAKGRUND ── */
+
+
+/* ── HEADER BLEND FIX ── */
+
+
+
+
+/* ── HEADER YSL STYLE ── */
+
+
+
+
+/* ── HEADER SCROLL LOGIC ── */
+
+
+
+
+
+
+
+/* ── MENY VIT I HERO ── */
+
+
+/* ── HEADER REGLER ── */
+/* Startsida — transparent, vit text */
+
+
+
+/* Startsida — vid scroll, vit bakgrund, svart text med difference */
+
+
+
+/* Undersidor — alltid vit bakgrund, svart text */
+
+
+
+
+/* ── HEADER EXCLUSION ── */
+
+
+
+
+/* ── HEADER ENKEL LÖSNING ── */
+
+
+
+
+
+
+
+/* ── MENY VIT OVERRIDE ── */
+
+
+/* ── HEADER DIFFERENCE DIREKT PÅ ELEMENT ── */
+
+
+
+
+
+/* ── HEADER ALLTID TRANSPARENT ── */
+
+
+/* ── LOGOTYP DIFFERENCE ── */
+
+
+
+
+/* ── HEADER FINAL ── */
+/* Startsida — alltid transparent */
+
+/* Logotyp och MENY — difference mot bakgrunden */
+
+
+/* Undersidor — vit header, svart text */
+body:not(.home) header#site-header {
+  background: #fff !important;
+  border-bottom: none !important;
+}
+body:not(.home) header#site-header .fdr-logo-svg {
+  filter: invert(0) !important;
+}
+body:not(.home) header#site-header .fdr-meny-btn {
+  color: #000 !important;
+}
+
+
+
+/* ── HEADER STARTSIDA ── */
+
+
+/* ── HEADER STARTSIDA ── */
+
+
+
+
+/* ── YSL HEADER STYLE ── */
+body.home header#site-header {
+  background: transparent !important;
+  border-bottom: none !important;
+  mix-blend-mode: difference;
+}
+body.home header#site-header .fdr-logo-svg {
+  filter: invert(1);
+}
+body.home header#site-header .fdr-meny-btn {
+  color: #fff !important;
+}
+
+/* ── LOGOTYP DIFFERENCE FIX ── */
+body.home header#site-header .fdr-logo-svg {
+  filter: invert(1) !important;
+}
+
+/* ── ÖVER HERO: tvinga vit text ── */
+body.home header#site-header.fdr-header--over-hero {
+  mix-blend-mode: normal !important;
+}
+body.home header#site-header.fdr-header--over-hero .fdr-logo-svg {
+  filter: invert(1) !important;
+}
+body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
+  color: #fff !important;
+}
+
+/* ── ÖVER HERO: TVINGA VIT TEXT FÖRSTÄRKT ── */
+body.home header#site-header.fdr-header--over-hero,
+body.home header#site-header.fdr-header--over-hero .fdr-header-inner,
+body.home header#site-header.fdr-header--over-hero .fdr-logo,
+body.home header#site-header.fdr-header--over-hero .fdr-logo-svg,
+body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
+  mix-blend-mode: normal !important;
+}
+body.home header#site-header.fdr-header--over-hero .fdr-logo-svg {
+  filter: invert(1) !important;
+}
+body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
+  color: #fff !important;
+}
+
+/* ── MENY STORLEK ── */
+.fdr-meny-btn {
+  font-size: 18px !important;
+}
+
+/* ── SEKTIONER MED YSL-ANIMATION ── */
+
+
+
+
+/* Initial state — bild centrerad, text dold */
+
+
+
+
+
+
+
+
+
+/* Animerad state — bild glider till vänster, text fade in */
+
+
+
+
+/* ── SEKTIONER ── */
+.em-sektioner {
+  background: #fff;
+  padding: 136px 0 0 0;
+}
+.em-sektion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+  gap: 80px;
+  position: relative;
+}
+.em-sektion-bild {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  /* Initial: centrerad — flytta åt höger eftersom det är vänster kolumn */
+  transform: translateX(50%);
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.em-sektion.em-sektion--visible .em-sektion-bild {
+  transform: translateX(0);
+}
+.em-sektion-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.em-sektion-text {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
+}
+.em-sektion.em-sektion--visible .em-sektion-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+.em-sektion-eyebrow {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin: 0 0 8px 0;
+  color: #000;
+  text-transform: uppercase;
+}
+.em-sektion-rubrik {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: max(48px, min(6vw, 80px));
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 32px 0;
+  color: #000;
+  text-transform: uppercase;
+}
+.em-sektion-beskrivning {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 64px 0;
+  max-width: 480px;
+}
+.em-sektion-btn {
+  display: inline-block;
+  padding: 18px 40px;
+  border: 1px solid #000;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.em-sektion-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ── KARUSELL ── */
+.em-karusell {
+  margin: 168px 0 136px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.em-karusell::-webkit-scrollbar {
+  display: none;
+}
+.em-karusell-track {
+  display: flex;
+  gap: 64px;
+  padding: 0 80px;
+  width: max-content;
+}
+.em-karusell-bild {
+  flex: 0 0 auto;
+  width: 480px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+.em-karusell-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── MOBIL ── */
+@media (max-width: 900px) {
+  .em-sektioner {
+    padding: 80px 0 0 0;
+  }
+  .em-sektion {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 32px;
+  }
+  .em-sektion-rubrik {
+    font-size: max(36px, min(10vw, 56px));
+  }
+  .em-karusell {
+    margin: 64px 0;
+  }
+  .em-karusell-track {
+    padding: 0 24px;
+    gap: 16px;
+  }
+  .em-karusell-bild {
+    width: 280px;
+  }
+}
+
+/* ── FOOTER ── */
+.fdr-footer {
+  background: #000;
+  color: #fff;
+  padding: 80px 40px 40px 40px;
+  margin-top: 0;
+}
+.fdr-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+.fdr-footer-logo {
+  display: flex;
+  justify-content: center;
+}
+.fdr-footer-logo-svg {
+  width: 138px;
+  height: 19px;
+  filter: invert(1);
+  display: block;
+}
+.fdr-footer-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 80px;
+  width: 100%;
+  max-width: 900px;
+}
+.fdr-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+.fdr-footer-col a {
+  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.fdr-footer-col a:hover {
+  opacity: 0.6;
+}
+.fdr-footer-social {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.fdr-footer-social a {
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  transition: opacity 0.2s;
+}
+.fdr-footer-social a:hover {
+  opacity: 0.6;
+}
+.fdr-footer-bottom {
+  margin-top: 48px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #666;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .fdr-footer {
+    padding: 60px 24px 32px 24px;
+    margin-top: 0;
+  }
+  .fdr-footer-cols {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ── KARTA SEKTION ── */
+.em-karta-sektion {
+  background: #fff;
+  padding: 0 32px 136px 32px;
+  margin-top: 0;
+}
+.em-karta-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: 600px 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.em-karta {
+  width: 600px;
+  height: 600px;
+  background: #f2f2f2;
+}
+.em-karta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-self: center;
+}
+.em-karta-adress {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  text-transform: uppercase;
+}
+.em-karta-link {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #000;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+.em-karta-link:hover {
+  opacity: 0.6;
+}
+.em-karta-pin {
+  background: transparent;
+  border: none;
+}
+
+/* Footer ska inte ha extra margin när karta finns ovanför */
+.em-karta-sektion + .fdr-footer {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .em-karta-sektion {
+    padding: 80px 24px;
+  }
+  .em-karta-wrap {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .em-karta {
+    height: 400px;
+  }
+}
+
+/* ── SPLASH ANIMATION v4 ────────── */
+
+
+
+/* Mobil */
+
+
+
+/* ════════════════════════════════════
+   LÄGENHETER-GRID COMPONENT (idag)
+   ════════════════════════════════════ */
+
+.em-listings-grid {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.em-listings-grid.em-listings-grid--open {
+  max-height: 8000px;
+}
+.em-listings-grid-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 136px 32px 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px 32px;
+}
+.em-listing-kort {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.em-listing-bild {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #e8e6e1;
+  margin-bottom: 16px;
+}
+.em-listing-bild-placeholder {
+  position: absolute;
+  inset: 0;
+  background: #e8e6e1;
+}
+.em-listing-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 1.0s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.em-listing-img.em-listing-img--active {
+  opacity: 1;
+}
+.em-listing-kort:hover .em-listing-img--active {
+  transform: scale(1.015);
+  transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 1.0s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.em-listing-status {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: #fff;
+  padding: 10px 16px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #000;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.em-listing-pilar {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  gap: 16px;
+  z-index: 2;
+}
+.em-listing-pil {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1;
+  transition: background 0.2s, color 0.2s;
+}
+.em-listing-pil:hover {
+  background: #000;
+  color: #fff;
+}
+.em-listing-info {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.em-listing-rad {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.em-listing-adress {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #000;
+}
+.em-listing-omrade {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #000;
+}
+.em-listing-detaljer {
+  font-size: 12px;
+  color: #000;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 900px) {
+  .em-listings-grid-inner {
+    grid-template-columns: 1fr;
+    padding: 64px 24px 0 24px;
+    gap: 32px;
+  }
+  .em-listing-status,
+  .em-listing-pilar {
+    top: 16px;
+  }
+  .em-listing-status { left: 16px; padding: 8px 12px; font-size: 11px; }
+  .em-listing-pilar { right: 16px; gap: 12px; }
+  .em-listing-pil { width: 32px; height: 32px; }
+}
+
+/* ════════════════════════════════════
+   ANLITA OSS-FORMULÄR (idag)
+   ════════════════════════════════════ */
+
+.em-anlita-form {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1.0s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.em-anlita-form.em-anlita-form--open {
+  max-height: 3000px;
+}
+.em-anlita-form-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 96px 80px 0 80px;
+}
+.em-anlita-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 64px;
+}
+.em-anlita-form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.em-anlita-form-rubrik {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.em-anlita-form-field {
+  position: relative;
+  border-bottom: 1px solid #000;
+  padding-bottom: 8px;
+}
+.em-anlita-form-field input,
+.em-anlita-form-field textarea,
+.em-anlita-form-field select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  padding: 16px 0 4px 0;
+  outline: none;
+  resize: none;
+}
+.em-anlita-form-field label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.2s;
+}
+.em-anlita-form-field input:focus + label,
+.em-anlita-form-field input:not(:placeholder-shown) + label,
+.em-anlita-form-field textarea:focus + label,
+.em-anlita-form-field textarea:not(:placeholder-shown) + label {
+  top: -4px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #000;
+  text-transform: uppercase;
+}
+.em-anlita-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding-bottom: 96px;
+}
+.em-anlita-form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #000;
+}
+.em-anlita-form-checkbox input {
+  position: absolute;
+  opacity: 0;
+}
+.em-anlita-form-checkbox-box {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  display: inline-block;
+  position: relative;
+}
+.em-anlita-form-checkbox input:checked + .em-anlita-form-checkbox-box::after {
+  content: '✓';
+  position: absolute;
+  top: -3px;
+  left: 2px;
+  font-size: 14px;
+  color: #000;
+}
+.em-anlita-form-submit {
+  background: #fff;
+  border: 1px solid #000;
+  padding: 16px 48px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #000;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.em-anlita-form-submit:hover {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .em-anlita-form-inner { padding: 48px 24px 0 24px; }
+  .em-anlita-form-grid { grid-template-columns: 1fr; gap: 48px; margin-bottom: 48px; }
+  .em-anlita-form-footer { flex-direction: column; align-items: stretch; padding-bottom: 48px; }
+}
+
+/* ════════════════════════════════════
+   SPLASH ANIMATION (idag, 4-stegsflöde)
+   ════════════════════════════════════ */
+
+
+
+/* ════════════════════════════════════
+   ANLITA OSS-FORMULÄR (idag)
+   ════════════════════════════════════ */
+
+.em-anlita-form {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1.0s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.em-anlita-form.em-anlita-form--open {
+  max-height: 3000px;
+}
+.em-anlita-form-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 96px 80px 0 80px;
+}
+.em-anlita-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 64px;
+}
+.em-anlita-form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.em-anlita-form-rubrik {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.em-anlita-form-field {
+  position: relative;
+  border-bottom: 1px solid #000;
+  padding-bottom: 8px;
+}
+.em-anlita-form-field input,
+.em-anlita-form-field textarea,
+.em-anlita-form-field select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  padding: 16px 0 4px 0;
+  outline: none;
+  resize: none;
+}
+.em-anlita-form-field label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.2s;
+}
+.em-anlita-form-field input:focus + label,
+.em-anlita-form-field input:not(:placeholder-shown) + label,
+.em-anlita-form-field textarea:focus + label,
+.em-anlita-form-field textarea:not(:placeholder-shown) + label {
+  top: -4px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #000;
+  text-transform: uppercase;
+}
+.em-anlita-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding-bottom: 96px;
+}
+.em-anlita-form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #000;
+}
+.em-anlita-form-checkbox input {
+  position: absolute;
+  opacity: 0;
+}
+.em-anlita-form-checkbox-box {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  display: inline-block;
+  position: relative;
+}
+.em-anlita-form-checkbox input:checked + .em-anlita-form-checkbox-box::after {
+  content: '✓';
+  position: absolute;
+  top: -3px;
+  left: 2px;
+  font-size: 14px;
+  color: #000;
+}
+.em-anlita-form-submit {
+  background: #fff;
+  border: 1px solid #000;
+  padding: 16px 48px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #000;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.em-anlita-form-submit:hover {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .em-anlita-form-inner { padding: 48px 24px 0 24px; }
+  .em-anlita-form-grid { grid-template-columns: 1fr; gap: 48px; margin-bottom: 48px; }
+  .em-anlita-form-footer { flex-direction: column; align-items: stretch; padding-bottom: 48px; }
+}
+
+/* ════════════════════════════════════
+   SPLASH ANIMATION (idag, 4-stegsflöde)
+   ════════════════════════════════════ */
+
+
+
+/* ════════════════════════════════════
+   OBJEKT-UNDERSIDA (/objekt) - WREDE-STIL
+   ════════════════════════════════════ */
+
+/* Bakgrund och textfärg */
+body.page-template-page-objekt {
+  background: #fff !important;
+}
+body.page-template-page-objekt #app {
+  background: #fff;
+}
+
+.em-objekt-page {
+  padding-top: 68px;
+  background: #fff;
+  color: #000;
+}
+
+/* Filter-rad — Wrede-stil */
+.em-objekt-page .em-objekt-filter {
+  max-width: 1440px;
+  margin: 0 auto 80px auto;
+  padding: 0 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  flex-wrap: wrap;
+  border-bottom: none;
+  background: #fff !important;
+  color: #000;
+}
+
+.em-filter-link {
+  background: transparent;
+  border: none;
+  padding: 0 0 4px 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  text-transform: none;
+  transition: opacity 0.2s;
+}
+.em-filter-link:hover {
+  opacity: 0.6;
+}
+.em-filter-link.active {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
+.em-filter-dropdown {
+  position: relative;
+}
+.em-filter-dropdown-trigger {
+  cursor: pointer;
+}
+.em-filter-arrow {
+  transition: transform 0.2s;
+}
+.em-filter-dropdown.open .em-filter-arrow {
+  transform: rotate(180deg);
+}
+.em-filter-dropdown.has-value .em-filter-label {
+  font-weight: 600;
+}
+
+.em-filter-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 8px 0;
+  display: none;
+  z-index: 10;
+}
+.em-filter-dropdown.open .em-filter-panel {
+  display: block;
+}
+.em-filter-option {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  text-align: left;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.em-filter-option:hover {
+  background: #f0f0f0;
+}
+.em-filter-option.active {
+  font-weight: 600;
+}
+
+/* Grid på undersidan (alltid öppen) */
+.em-objekt-page .em-listings-grid {
+  max-height: none;
+  overflow: visible;
+}
+.em-objekt-page .em-listings-grid-inner {
+  padding-top: 0;
+  padding-bottom: 136px;
+}
+
+/* Header logo storlek (universal) */
+.fdr-logo-svg {
+  width: 138px;
+  height: 19px;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .em-objekt-page {
+    padding-top: 48px;
+  }
+  .em-objekt-page .em-objekt-filter {
+    padding: 0 24px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+}
+
+
+/* ── HEADER MENY-knapp 10px ────────── */
+.fdr-meny-btn {
+  font-size: 10px !important;
+}
+
+/* ── Override: ingen border under headern någonsin ── */
+header.fdr-header,
+header#site-header,
+.fdr-header,
+#site-header,
+.site-header {
+  border-bottom: 0 none transparent !important;
+  box-shadow: none !important;
+}
+
+/* ── BRUTAL HEADER BORDER REMOVAL ── */
+header,
+header *,
+.fdr-header,
+.fdr-header *,
+.site-header,
+.site-header *,
+#site-header,
+#site-header *,
+.fdr-header-inner {
+  border-bottom: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
+.fdr-header::after,
+.fdr-header::before,
+#site-header::after,
+#site-header::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* ── ÄVEN MER BRUTAL: ta bort ALLA hr och borders mellan header och main ── */
+hr {
+  display: none !important;
+}
+main, #main, main#main, #app > main {
+  border: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+header + *, #site-header + * {
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ── Ultra-aggressiv: ID + alla namn ── */
+#site-header[id],
+header#site-header,
+header#site-header.fdr-header {
+  border: 0 !important;
+  border-bottom: 0 none transparent !important;
+  border-bottom-width: 0 !important;
+}
+
+
+/* ════════════════════════════════════
+   SPLASH ANIMATION (ren version)
+   ════════════════════════════════════ */
+
+#em-splash {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 1.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+#em-splash.em-splash--exit {
+  opacity: 0;
+  pointer-events: none;
+}
+#em-splash-logo {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 18px;
+  transition: opacity 0.8s ease;
+}
+#em-splash-text {
+  width: 138px;
+  height: 19px;
+  display: block;
+  filter: invert(1);
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+#em-splash-text.em-splash-text--visible {
+  opacity: 1;
+}
+#em-splash-tagline {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  line-height: 1;
+  position: relative;
+  top: 0px;
+  transition: opacity 2.0s ease 0.3s, max-width 2.0s cubic-bezier(0.4,0,0.2,1);
+}
+#em-splash-tagline.em-splash-tagline--visible {
+  opacity: 1;
+  max-width: 280px;
+}
+#em-splash-logo.em-splash-logo--fade-out {
+  opacity: 0;
+}
+
+/* ════════════════════════════════════════════
+   OBJEKTDETALJSIDA (Tegnérgatan etc)
+   ════════════════════════════════════════════ */
+
+.em-objekt-detalj {
+  background: #fff;
+  color: #000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+/* ─── HERO ─── */
+.em-detalj-hero {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 40px 0 40px;
+}
+.em-detalj-hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.em-detalj-alla-bilder-btn {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: none;
+  padding: 14px 64px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #000;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.em-detalj-alla-bilder-btn:hover {
+  background: #f5f5f5;
+}
+
+/* ─── INTRO + MÄKLARE (två-kolumn) ─── */
+.em-detalj-intro {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 96px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  align-items: start;
+}
+
+/* Vänster kolumn */
+.em-detalj-intro-vanster {
+  min-width: 0;
+}
+.em-detalj-omrade {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #000;
+  margin: 0 0 16px 0;
+}
+.em-detalj-rubrik {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin: 0 0 48px 0;
+  color: #000;
+}
+.em-detalj-saljtext {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #000;
+  margin-bottom: 48px;
+}
+.em-detalj-saljtext p {
+  margin: 0 0 16px 0;
+}
+.em-detalj-saljtext span {
+  /* Strippa Tailwind-stilar från fasad-innehåll */
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: text !important;
+}
+
+/* Grundfakta (Pris, Avgift osv) */
+.em-detalj-grundfakta {
+  margin: 0;
+  padding: 0;
+}
+.em-grundfakta-rad {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  padding: 8px 0;
+  font-size: 13px;
+}
+.em-grundfakta-rad dt {
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+}
+.em-grundfakta-rad dd {
+  margin: 0;
+  color: #000;
+}
+
+/* Höger kolumn (mäklare) */
+.em-detalj-intro-hoger {
+  position: sticky;
+  top: 100px;
+}
+.em-detalj-maklare-bild {
+  display: block;
+  width: 85%;
+  max-width: 340px;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  margin-bottom: 24px;
+}
+.em-detalj-maklare-typ {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #000;
+  margin: 0 0 8px 0;
+}
+.em-detalj-maklare-namn {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px 0;
+  color: #000;
+}
+.em-detalj-maklare-kontakt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin-bottom: 32px;
+  color: #000;
+}
+.em-detalj-maklare-kontakt a {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.em-detalj-maklare-kontakt a:hover {
+  border-bottom-color: #000;
+}
+
+/* Visningar */
+.em-detalj-visningar {
+  margin-bottom: 24px;
+}
+.em-detalj-visning {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 0.5px solid #e0e0e0;
+  cursor: pointer;
+}
+.em-detalj-visning:last-of-type {
+  border-bottom: 0.5px solid #e0e0e0;
+}
+.em-detalj-visning input[type="checkbox"] {
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: #000;
+}
+.em-detalj-visning-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.em-detalj-visning-text strong {
+  font-weight: 500;
+  color: #000;
+}
+.em-detalj-visning-text em {
+  font-style: normal;
+  color: #555;
+}
+
+/* CTA Intresseanmälan */
+.em-detalj-cta {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 18px 32px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.em-detalj-cta:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .em-detalj-intro {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 48px 24px;
+  }
+  .em-detalj-rubrik { font-size: 36px; }
+  .em-detalj-intro-hoger { position: static; }
+}
+
+/* ─── BILD 2 (planritning) + BILD 3 ─── */
+.em-detalj-tva-bilder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 80px 40px;
+}
+.em-detalj-bild-vanster img,
+.em-detalj-bild-hoger img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.em-detalj-bild-vanster {
+  background: #f5f5f5;
+}
+.em-detalj-bild-vanster img {
+  /* Planritning skall vara contain — inte cover — för att inte beskäras */
+  object-fit: contain;
+  background: #f5f5f5;
+}
+.em-detalj-bild-hoger {
+  position: relative;
+}
+.em-detalj-alla-bilder-btn--inline {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 900px) {
+  .em-detalj-tva-bilder {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 24px 48px 24px;
+  }
+}
+
+/* ─── LÄGENHETSFAKTA + FÖRENINGSFAKTA (två-kolumn) ─── */
+.em-detalj-fakta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 80px 40px;
+}
+.em-detalj-fakta-rubrik {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin: 0 0 32px 0;
+  color: #000;
+}
+.em-detalj-fakta-kolumn dl {
+  margin: 0;
+  padding: 0;
+}
+.em-detalj-fakta-kolumn dl > div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  padding: 8px 0;
+  font-size: 13px;
+  align-items: baseline;
+}
+.em-detalj-fakta-kolumn dt {
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+}
+.em-detalj-fakta-kolumn dd {
+  margin: 0;
+  color: #000;
+}
+
+@media (max-width: 900px) {
+  .em-detalj-fakta-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 0 24px 48px 24px;
+  }
+  .em-detalj-fakta-kolumn dl > div {
+    grid-template-columns: 140px 1fr;
+  }
+}
+
+/* ─── WIDE-BILD (stor bild mellan fakta och renoveringar) ─── */
+.em-detalj-wide-bild {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 80px 40px;
+}
+.em-detalj-wide-bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+/* ─── RENOVERINGAR + DOKUMENT (två-kolumn) ─── */
+.em-detalj-renovering-dokument {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 80px 40px;
+}
+.em-detalj-renoveringar-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #000;
+}
+.em-detalj-renoveringar-text p {
+  margin: 0 0 16px 0;
+}
+
+/* Dokument-grid (2 kolumner med knappar) */
+.em-detalj-dokument-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.em-detalj-dokument-knapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18px 16px;
+  border: 1px solid #000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #000;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.em-detalj-dokument-knapp:hover {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .em-detalj-wide-bild { padding: 0 24px 48px 24px; }
+  .em-detalj-renovering-dokument {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 0 24px 48px 24px;
+  }
+  .em-detalj-dokument-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── KARTA + ADRESS ─── */
+.em-detalj-karta-sektion {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 120px 40px;
+  align-items: start;
+}
+#em-detalj-karta {
+  width: 100%;
+  height: 480px;
+  background: #f5f5f5;
+}
+/* Leaflet zoom-kontroller — gör dem vita/svarta enligt designen */
+#em-detalj-karta .leaflet-control-zoom {
+  border: none;
+  box-shadow: none;
+}
+#em-detalj-karta .leaflet-control-zoom a {
+  background: #fff;
+  color: #000;
+  border: 1px solid #e0e0e0;
+  width: 32px;
+  height: 32px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 300;
+}
+#em-detalj-karta .leaflet-control-zoom a:hover {
+  background: #f5f5f5;
+}
+#em-detalj-karta .leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.em-detalj-adress {
+  padding-top: 16px;
+}
+.em-detalj-adress p {
+  margin: 0 0 4px 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #000;
+}
+.em-detalj-adress p strong {
+  font-weight: 500;
+}
+.em-detalj-hitta {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.em-detalj-hitta:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .em-detalj-karta-sektion {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 24px 64px 24px;
+  }
+  #em-detalj-karta { height: 360px; }
+}
+
+/* ─── LIKNANDE OBJEKT ─── */
+.em-detalj-liknande {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 120px 40px;
+}
+.em-detalj-liknande-rubrik {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin: 0 0 32px 0;
+  color: #000;
+}
+.em-detalj-liknande-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.em-detalj-liknande-kort {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  transition: opacity 0.2s;
+}
+.em-detalj-liknande-kort:hover {
+  opacity: 0.85;
+}
+.em-detalj-liknande-bild {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #f5f5f5;
+}
+.em-detalj-liknande-bild img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.em-detalj-liknande-kort:hover .em-detalj-liknande-bild img {
+  transform: scale(1.015);
+}
+.em-detalj-liknande-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.em-detalj-liknande-text p {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666;
+}
+.em-detalj-liknande-text h4 {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #000;
+}
+
+@media (max-width: 900px) {
+  .em-detalj-liknande {
+    padding: 0 24px 64px 24px;
+  }
+  .em-detalj-liknande-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ─── ALLA BILDER-MODAL ─── */
+
+
+/* Mosaik-grid: alternerande stor → 2 halva → stor → 2 halva */
+/* Var 3:e bild från index 0 är full-bredd */
+
+@media (max-width: 700px) {
+        }
+
+/* ════════════════════════════════════════════
+   OM OSS-SIDAN
+   ════════════════════════════════════════════ */
+
+.em-om-intro {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+.em-om-intro-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+.em-om-intro-bild {
+  width: 60%;
+  max-width: 384px;
+}
+.em-om-intro-bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+.em-om-intro-text {
+  padding-top: 16px;
+}
+.em-om-eyebrow {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #000;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+.em-om-rubrik {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin: 0 0 32px 0;
+  color: #000;
+}
+.em-om-brodtext {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #000;
+  margin: 0 0 16px 0;
+}
+.em-om-cta {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 18px 48px;
+  background: #fff;
+  border: 1px solid #000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.em-om-cta:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ─── TEAM-GRID ─── */
+.em-team {
+  background: #fff;
+  padding: 80px 40px;
+}
+.em-team-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px 64px;
+}
+.em-team-kort {
+  display: flex;
+  flex-direction: column;
+}
+.em-team-bild {
+  width: 60%;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.em-team-bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: filter 0.6s ease;
+}
+.em-team-kort:hover .em-team-bild img {
+  filter: grayscale(0);
+}
+.em-team-info {
+  padding: 0;
+}
+.em-team-eyebrow {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+.em-team-namn {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: #000;
+  margin: 0 0 16px 0;
+}
+.em-team-kontakt {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.em-team-kontakt a {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+  align-self: flex-start;
+}
+.em-team-kontakt a:hover {
+  border-bottom-color: #000;
+}
+
+/* ─── VÅR VISION ─── */
+.em-vision {
+  background: #fff;
+  padding: 80px 40px 120px 40px;
+}
+.em-vision-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+.em-vision-bild {
+  width: 100%;
+}
+.em-vision-bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+.em-vision-text {
+  padding-top: 16px;
+}
+.em-vision-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 32px;
+}
+.em-vision-col-rubrik {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #000;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+.em-vision-col p {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #000;
+  margin: 0 0 16px 0;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 900px) {
+  .em-om-intro {
+    padding: 48px 24px;
+  }
+  .em-om-intro-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .em-om-rubrik {
+    font-size: 36px;
+  }
+  .em-team {
+    padding: 48px 24px;
+  }
+  .em-team-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .em-vision {
+    padding: 48px 24px;
+  }
+  .em-vision-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .em-vision-cols {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ─── ALLA BILDER INLINE EXPANSION ─── */
+.em-galleri-expand {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.em-galleri-expand--open {
+  max-height: 50000px;
+}
+.em-galleri-expand-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 40px 0 40px;
+}
+.em-galleri-expand-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.em-galleri-expand-item {
+  background: #f5f5f5;
+  overflow: hidden;
+}
+.em-galleri-expand-item img {
+  display: block;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+/* Mönster: 1 full + 2 halva + 1 full + 2 halva ... */
+.em-galleri-expand-item:nth-child(3n+1) {
+  grid-column: 1 / -1;
+}
+.em-galleri-expand-item:nth-child(3n+1) img {
+  height: 700px;
+}
+
+@media (max-width: 900px) {
+  .em-galleri-expand-inner { padding: 48px 24px 0 24px; }
+  .em-galleri-expand-grid { grid-template-columns: 1fr; gap: 8px; }
+  .em-galleri-expand-item img { height: 360px; }
+  .em-galleri-expand-item:nth-child(3n+1) { grid-column: auto; }
+  .em-galleri-expand-item:nth-child(3n+1) img { height: 360px; }
 }

@@ -156,3 +156,19 @@ wp-activate.php
 web/test.php
 web/dbtest2.php
 web/wp-config.php
+
+# Lokala backup-filer (Claude/Johan arbets-backups)
+*.bak
+*.bak2
+*.bak3
+*.bak-*
+*.bak_*
+*.WORKING-*
+*.before-*
+*.WORKING
+
+# Debug-filer
+debug-status.php
+debug.log
+web/app/debug.log
+*.broken-*

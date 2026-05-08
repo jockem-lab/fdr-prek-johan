@@ -9,7 +9,7 @@
       <img src="/app/uploads/team/johan-franzon.jpg" alt="Om oss">
     </div>
     <div class="em-om-intro-text em-textblock">
-      <p class="em-t-eyebrow">BAKGRUND</p>
+      <p class="em-t-eyebrow--lg">BAKGRUND</p>
       <h1 class="em-t-h1">OM OSS</h1>
       <p class="em-t-body">Ett Mäkleri grundades av Johan Franzon, Johan Du Rietz och Farboud Nejad, som tillsammans har lång erfarenhet av bostadsförmedling i Stockholm. Med en gemensam ambition att erbjuda en mer personlig och genomtänkt mäklartjänst arbetar vi med ett selektivt urval av uppdrag varje år. Genom noggrannhet, lokalkännedom och ett starkt personligt engagemang skapar vi de bästa förutsättningarna för varje bostadsaffär. Vårt fokus ligger alltid på kvalitet, strategi och ett nära samarbete med våra kunder genom hela processen.</p>
       <a href="#em-team" class="em-om-cta em-t-tag em-textblock-cta">VÅRT TEAM</a>
@@ -49,25 +49,19 @@
 
 {{-- VÅR VISION-SEKTION --}}
 <section class="em-vision">
-  <div class="em-vision-inner">
-    <div class="em-vision-bild">
-      <img src="/app/uploads/hero/placeholder3.jpg" alt="Vår vision">
+  <div class="em-vision-bild-wrap">
+    <img src="/app/uploads/hero/placeholder3.jpg" alt="Vår vision" class="em-vision-bild-img">
+  </div>
+  <div class="em-vision-content">
+    <div class="em-vision-col em-textblock">
+      <p class="em-t-eyebrow--lg">OM OSS</p>
+      <h2 class="em-t-h2">EXEMPELRUBRIK</h2>
+      <p class="em-t-body">Vår främsta målsättning är att upprätthålla högsta kvalitet i varje enskild försäljning. För att säkerställa detta arbetar vi med ett selektivt urval av uppdrag varje år, vilket ger oss möjlighet att erbjuda en genomtänkt, strukturerad och noggrant anpassad försäljningsprocess. Tillgänglighet, flexibilitet och ett personligt engagemang är avgörande faktorer för att skapa bästa möjliga förutsättningar för ett optimalt slutpris.</p>
     </div>
-    <div class="em-vision-text em-textblock">
-      <p class="em-t-eyebrow">OM OSS</p>
-      <h2 class="em-t-h1">VÅR VISION</h2>
-      <div class="em-vision-cols">
-        <div class="em-vision-col">
-          <h3 class="em-vision-col-rubrik em-t-h5">SELEKTION</h3>
-          <p>Vi tror på medvetna val och ett selektivt urval. Genom att arbeta med ett begränsat antal uppdrag varje år kan vi ge varje bostad och varje kund den uppmärksamhet och engagemang de förtjänar.</p>
-          <p>Varje förmedling är personlig och vi lägger stor vikt vid att förstå både uppdragsgivarens behov och bostadens unika kvaliteter.</p>
-        </div>
-        <div class="em-vision-col">
-          <h3 class="em-vision-col-rubrik em-t-h5">KVALITET</h3>
-          <p>För oss handlar kvalitet inte bara om resultatet, utan om hela processen. Från första värderingsmöte till slutförd affär arbetar vi med precision, omsorg och hög integritet.</p>
-          <p>Vi tror på långsiktiga relationer och att en bostadsaffär ska vara genomtänkt — för både säljare och köpare.</p>
-        </div>
-      </div>
+    <div class="em-vision-col em-textblock">
+      <p class="em-t-eyebrow--lg">VÅR VISION</p>
+      <h2 class="em-t-h2">EXEMPELRUBRIK</h2>
+      <p class="em-t-body">Vår främsta målsättning är att upprätthålla högsta kvalitet i varje enskild försäljning. För att säkerställa detta arbetar vi med ett selektivt urval av uppdrag varje år, vilket ger oss möjlighet att erbjuda en genomtänkt, strukturerad och noggrant anpassad försäljningsprocess. Tillgänglighet, flexibilitet och ett personligt engagemang är avgörande faktorer för att skapa bästa möjliga förutsättningar för ett optimalt slutpris.</p>
     </div>
   </div>
 </section>

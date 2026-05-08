@@ -172,3 +172,4 @@ debug-status.php
 debug.log
 web/app/debug.log
 *.broken-*
+.ngrok-url

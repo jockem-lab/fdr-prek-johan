@@ -177,37 +177,20 @@ foreach ($listings as $l) {
 @endphp
 
 <section class="em-objekt-page">
-  {{-- Filter-rad (Wrede-stil) --}}
+  {{-- Filter-rad (Figma-spec) --}}
   <div class="em-objekt-filter">
-    <button class="em-filter-link active" data-filter-typ="alla">Alla</button>
-    <button class="em-filter-link" data-filter-typ="lagenhet">Lägenheter</button>
-    <button class="em-filter-link" data-filter-typ="hus">Hus</button>
-    <button class="em-filter-link" data-filter-typ="sald">Sålda</button>
-
-    <div class="em-filter-dropdown" data-dropdown="omrade">
-      <button class="em-filter-link em-filter-dropdown-trigger" type="button">
-        <span class="em-filter-label">Område</span>
-        <svg class="em-filter-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2"/></svg>
-      </button>
-      <div class="em-filter-panel">
-        <button class="em-filter-option active" data-value="alla">Alla områden</button>
-        @foreach($omraden as $o)
-          <button class="em-filter-option" data-value="{{ $o }}">{{ $o }}</button>
-        @endforeach
-      </div>
+    {{-- Vänster: typ-filter --}}
+    <div class="em-filter-grupp em-filter-grupp--typ">
+      <button class="em-filter-knapp active" data-filter-typ="alla">ALLA</button>
+      <button class="em-filter-knapp" data-filter-typ="lagenhet">LÄGENHETER</button>
+      <button class="em-filter-knapp" data-filter-typ="hus">HUS</button>
     </div>
-
-    <div class="em-filter-dropdown" data-dropdown="status">
-      <button class="em-filter-link em-filter-dropdown-trigger" type="button">
-        <span class="em-filter-label">Status</span>
-        <svg class="em-filter-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2"/></svg>
-      </button>
-      <div class="em-filter-panel">
-        <button class="em-filter-option active" data-value="alla">Alla statusar</button>
-        @foreach($statuses as $st)
-          <button class="em-filter-option" data-value="{{ $st }}">{{ $st }}</button>
-        @endforeach
-      </div>
+    {{-- Höger: sortering + sålda --}}
+    <div class="em-filter-grupp em-filter-grupp--sort">
+      <button class="em-filter-knapp active" data-sort="senaste">SENASTE</button>
+      <button class="em-filter-knapp" data-sort="yta">YTA</button>
+      <button class="em-filter-knapp" data-sort="pris">PRIS</button>
+      <button class="em-filter-knapp" data-filter-sald="1">SÅLDA</button>
     </div>
   </div>
 
@@ -220,135 +203,136 @@ foreach ($listings as $l) {
   var grid = document.getElementById('objekt-grid-page');
   if (!grid) return;
 
-  // Lägg till data-attribut på korten för filtrering
   var listings = @json($listings);
   var kort = grid.querySelectorAll('.em-listing-kort');
+
+  // Lägg till data-attribut för filtrering + sortering
   kort.forEach(function(k, i) {
     var l = listings[i];
     if (!l) return;
     k.setAttribute('data-typ', l.category || 'annat');
-    k.setAttribute('data-omrade', l.omrade || '');
-    k.setAttribute('data-status', l.status || '');
     k.setAttribute('data-sold', l.is_sold ? '1' : '0');
+    k.setAttribute('data-pris', l.price_raw || 0);
+    k.setAttribute('data-yta', l.area_raw || 0);
+    k.setAttribute('data-datum', l.published_raw || 0);
   });
 
-  // Tvinga grid att vara öppen direkt på undersidan
-  grid.classList.add('em-listings-grid--open');
-  grid.setAttribute('aria-hidden', 'false');
-
-  // Filter-state
   var state = {
-    typ: 'alla',      // alla | lagenhet | hus | sald
-    omrade: 'alla',
-    status: 'alla',
+    typ: 'alla',
+    sort: 'senaste',
+    sortDir: 'asc',  // stigande default
+    visaSalda: false
   };
 
   function applyFilter() {
     kort.forEach(function(k) {
       var typ = k.getAttribute('data-typ');
-      var omrade = k.getAttribute('data-omrade');
-      var status = k.getAttribute('data-status');
       var sold = k.getAttribute('data-sold') === '1';
-
       var visa = true;
 
-      // Typ-filter (sald hanteras här)
-      if (state.typ === 'sald') {
+      // Sålda-filter har högsta prio
+      if (state.visaSalda) {
         if (!sold) visa = false;
-      } else if (state.typ === 'alla') {
-        if (sold) visa = false;
       } else {
         if (sold) visa = false;
-        if (typ !== state.typ) visa = false;
-      }
-
-      if (visa && state.omrade !== 'alla' && omrade !== state.omrade) visa = false;
-      if (visa && state.status !== 'alla') {
-        var statusNorm = status.indexOf('VISNING ') === 0 ? 'VISNING' : status;
-        if (statusNorm !== state.status) visa = false;
+        if (state.typ !== 'alla' && typ !== state.typ) visa = false;
       }
 
       k.style.display = visa ? '' : 'none';
     });
   }
 
-  // Typ-knappar
+  function applySort() {
+    var parent = kort[0] && kort[0].parentNode;
+    if (!parent) return;
+
+    var sortKey = state.sort === 'senaste' ? 'data-datum' :
+                  state.sort === 'pris' ? 'data-pris' :
+                  state.sort === 'yta' ? 'data-yta' : null;
+    if (!sortKey) return;
+
+    var arr = Array.from(kort);
+    arr.sort(function(a, b) {
+      var av = parseFloat(a.getAttribute(sortKey)) || 0;
+      var bv = parseFloat(b.getAttribute(sortKey)) || 0;
+      // Senaste: nyast först (descending)
+      if (state.sort === 'senaste') return bv - av;
+      // Yta/Pris: respektera sortDir
+      return state.sortDir === 'asc' ? av - bv : bv - av;
+    });
+    arr.forEach(function(k) { parent.appendChild(k); });
+  }
+
+  // Typ-knappar (vänster grupp)
   var typBtns = document.querySelectorAll('[data-filter-typ]');
   typBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
       typBtns.forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
       state.typ = btn.getAttribute('data-filter-typ');
+      // Avaktivera Sålda om typ-filter används
+      if (state.visaSalda) {
+        state.visaSalda = false;
+        var saldBtn = document.querySelector('[data-filter-sald]');
+        if (saldBtn) saldBtn.classList.remove('active');
+      }
       applyFilter();
     });
   });
 
-  // Dropdown-trigger: öppna/stäng
-  document.querySelectorAll('.em-filter-dropdown-trigger').forEach(function(trig) {
-    trig.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var dd = trig.closest('.em-filter-dropdown');
-      var open = dd.classList.contains('open');
-      // Stäng alla andra
-      document.querySelectorAll('.em-filter-dropdown').forEach(function(d) { d.classList.remove('open'); });
-      if (!open) dd.classList.add('open');
+  // Sortering-knappar (höger grupp)
+  var sortBtns = document.querySelectorAll('[data-sort]');
+  sortBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var sortVal = btn.getAttribute('data-sort');
+      // Toggle riktning om samma knapp klickas igen
+      if (state.sort === sortVal) {
+        state.sortDir = state.sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        state.sort = sortVal;
+        state.sortDir = 'asc';
+      }
+      sortBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      // Avaktivera Sålda
+      if (state.visaSalda) {
+        state.visaSalda = false;
+        var saldBtn = document.querySelector('[data-filter-sald]');
+        if (saldBtn) saldBtn.classList.remove('active');
+      }
+      applySort();
+      applyFilter();
     });
   });
 
-  // Stäng dropdowns vid klick utanför
-  document.addEventListener('click', function() {
-    document.querySelectorAll('.em-filter-dropdown').forEach(function(d) { d.classList.remove('open'); });
-  });
-
-  // Filter-options inom dropdown
-  document.querySelectorAll('.em-filter-dropdown').forEach(function(dd) {
-    var key = dd.getAttribute('data-dropdown'); // omrade | status
-    var trigLabel = dd.querySelector('.em-filter-label');
-    var defaultLabel = trigLabel.textContent;
-
-    dd.querySelectorAll('.em-filter-option').forEach(function(opt) {
-      opt.addEventListener('click', function(e) {
-        e.stopPropagation();
-        var val = opt.getAttribute('data-value');
-        // Markera aktiv
-        dd.querySelectorAll('.em-filter-option').forEach(function(o) { o.classList.remove('active'); });
-        opt.classList.add('active');
-        // Uppdatera label
-        if (val === 'alla') {
-          trigLabel.textContent = defaultLabel;
-          dd.classList.remove('has-value');
-        } else {
-          trigLabel.textContent = opt.textContent;
-          dd.classList.add('has-value');
-        }
-        // Stäng panelen
-        dd.classList.remove('open');
-        // Uppdatera state
-        state[key] = val;
-        applyFilter();
-      });
+  // Sålda-knapp
+  var saldBtn = document.querySelector('[data-filter-sald]');
+  if (saldBtn) {
+    saldBtn.addEventListener('click', function() {
+      state.visaSalda = !state.visaSalda;
+      if (state.visaSalda) {
+        saldBtn.classList.add('active');
+        // Avaktivera typ + sortering visuellt
+        typBtns.forEach(function(b) { b.classList.remove('active'); });
+        sortBtns.forEach(function(b) { b.classList.remove('active'); });
+      } else {
+        saldBtn.classList.remove('active');
+        // Återställ default-aktiva
+        var allaBtn = document.querySelector('[data-filter-typ="alla"]');
+        var senasteBtn = document.querySelector('[data-sort="senaste"]');
+        if (allaBtn) allaBtn.classList.add('active');
+        if (senasteBtn) senasteBtn.classList.add('active');
+        state.typ = 'alla';
+        state.sort = 'senaste';
+      }
+      applyFilter();
+      applySort();
     });
-  });
+  }
 
+  // Initial sortering
+  applySort();
   applyFilter();
-
-  // Pilar för bilder (samma logik som startsidan)
-  document.querySelectorAll('.em-listing-pil').forEach(function(pil) {
-    pil.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var k = pil.closest('.em-listing-kort');
-      if (!k) return;
-      var imgs = k.querySelectorAll('.em-listing-img');
-      if (imgs.length < 2) return;
-      var current = parseInt(k.getAttribute('data-image-index') || '0', 10);
-      var direction = pil.classList.contains('em-listing-pil--next') ? 1 : -1;
-      var next = (current + direction + imgs.length) % imgs.length;
-      imgs[current].classList.remove('em-listing-img--active');
-      imgs[next].classList.add('em-listing-img--active');
-      k.setAttribute('data-image-index', next);
-    });
-  });
 })();
 </script>
 

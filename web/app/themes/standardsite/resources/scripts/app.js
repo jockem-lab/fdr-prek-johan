@@ -688,3 +688,52 @@ document.querySelectorAll('.fdr-hero').forEach(hero => {
     slides[current].classList.add('active');
   }, 5000);
 });
+
+
+// === Listing card carousel: pilar + scroll-snap ===
+(function() {
+  function initCarousels() {
+    document.querySelectorAll('.em-listing-kort[data-image-count]').forEach(function(kort) {
+      if (kort.dataset.carouselInit) return;
+      kort.dataset.carouselInit = '1';
+
+      var track = kort.querySelector('.em-listing-track');
+      if (!track) return;
+
+      var prev = kort.querySelector('.em-listing-pil--prev');
+      var next = kort.querySelector('.em-listing-pil--next');
+
+      function scrollByOne(dir) {
+        var slide = track.querySelector('.em-listing-slide');
+        if (!slide) return;
+        var w = slide.getBoundingClientRect().width;
+        track.scrollBy({ left: dir * w, behavior: 'smooth' });
+      }
+
+      function handlePil(e, dir) {
+        e.preventDefault();
+        e.stopPropagation();
+        scrollByOne(dir);
+      }
+
+      if (prev) prev.addEventListener('click', function(e) { handlePil(e, -1); });
+      if (next) next.addEventListener('click', function(e) { handlePil(e, 1); });
+
+      // Förhindra att drag på bilden navigerar via <a>
+      var dragStart = null;
+      track.addEventListener('mousedown', function(e) { dragStart = e.clientX; });
+      track.addEventListener('click', function(e) {
+        if (dragStart !== null && Math.abs(e.clientX - dragStart) > 5) {
+          e.preventDefault();
+        }
+        dragStart = null;
+      }, true);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousels);
+  } else {
+    initCarousels();
+  }
+})();

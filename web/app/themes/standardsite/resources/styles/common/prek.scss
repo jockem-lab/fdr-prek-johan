@@ -2011,27 +2011,11 @@ a.btn-secondary:hover { border-color: #fff; }
   margin: 0 auto;
 }
 
-// Konsekvent innehållsbredd och padding
-.till-salu-filter .filter-knappar,
-.till-salu-innehall,
-.kontakt-maklare-sektion > *,
-.page-sektion .page-inner,
-.kontakt-sektion-ljus .page-inner {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 40px;
-  padding-right: 40px;
-}
 
-.till-salu-filter {
-  padding: 0 !important;
-}
 
-.till-salu-filter .filter-knappar {
-  padding-top: 20px !important;
-  padding-bottom: 20px !important;
-}
+
+
+
 
 .till-salu-innehall {
   padding-top: 48px !important;
@@ -2047,10 +2031,7 @@ a.btn-secondary:hover { border-color: #fff; }
 }
 
 // Tvinga konsekvent vänstermarginal för filter
-.till-salu-filter .filter-knappar {
-  padding-left: 40px !important;
-  padding-right: 40px !important;
-}
+
 
 // Rubrik-typsnitt på om oss-sektionen
 .om-oss-intro h2,
@@ -2072,9 +2053,7 @@ a.btn-secondary:hover { border-color: #fff; }
 }
 
 // Centrera filter-knappar
-.till-salu-filter .filter-knappar {
-  justify-content: center !important;
-}
+
 
 // Kontaktformulär layout
 .kontakt-layout {
@@ -2704,21 +2683,7 @@ body {
   color: rgba(255,255,255,0.45) !important;
 }
 
-/* Filter */
-.filter-knapp {
-  border-color: rgba(255,255,255,0.2) !important;
-  color: rgba(255,255,255,0.7) !important;
-  background: transparent !important;
-}
-.filter-knapp:hover {
-  border-color: var(--btn-blue) !important;
-  color: var(--btn-blue) !important;
-}
-.filter-knapp.active {
-  background: var(--btn-blue) !important;
-  border-color: var(--btn-blue) !important;
-  color: #2C2C2C !important;
-}
+
 
 /* Knappar */
 .btn-primary, a.btn-primary {
@@ -3989,9 +3954,6 @@ html body.admin-bar {
   transition: all 0.3s ease;
 }
 .fdr-logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 500;
@@ -4902,21 +4864,8 @@ h1, h2, h3, h4, h5 {
   text-align: center;
   margin-bottom: 40px;
 }
-.em-listing-omrade {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: #000;
-  margin-bottom: 8px;
-}
-.em-listing-adress {
-  font-size: clamp(28px, 5vw, 52px);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #000;
-  line-height: 1.05;
-  margin: 0;
-}
+
+
 .em-listing-hero {
   position: relative;
   margin-bottom: 48px;
@@ -5171,21 +5120,8 @@ h1, h2, h3, h4, h5 {
   color: #fff !important;
   text-decoration: none !important;
   text-transform: uppercase !important;
-  order: 1 !important;
 }
 .fdr-header.fdr-header--scrolled .fdr-logo { color: #000 !important; }
-.fdr-meny-btn {
-  background: none !important;
-  border: none !important;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.15em !important;
-  color: #fff !important;
-  cursor: pointer !important;
-  padding: 0 !important;
-  order: 2 !important;
-}
 .fdr-header.fdr-header--scrolled .fdr-meny-btn { color: #000 !important; }
 .fdr-menu-btn, .fdr-kontakt-btn { display: none !important; }
 
@@ -5260,33 +5196,7 @@ body {
   inset: 0;
   background: rgba(0,0,0,0.3);
 }
-.em-objekt-filter {
-  display: flex;
-  gap: 0;
-  padding: 0 40px;
-  border-bottom: none;
-  background: #fff;
-}
-.em-filter-knapp {
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #999;
-  padding: 16px 20px;
-  transition: all 0.2s;
-  margin-bottom: -0.5px;
-}
-.em-filter-knapp:hover { color: #000; }
-.em-filter-knapp.active {
-  color: #000;
-  border-bottom-color: #000;
-}
+/* (gammal filter-stil borttagen, ersatt av ny block i slutet) */
 .em-objekt-innehall {
   background: #fff;
   padding: 40px;
@@ -5415,18 +5325,8 @@ body {
 /* Svart logotyp på undersidor och scrollad header */
 
 /* MENY-knapp typsnitt */
-.fdr-meny-btn {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 13px !important;
-  letter-spacing: 0.18em !important;
-}
 
 /* ── HEADER FINAL FIX ── */
-.fdr-meny-btn {
-  font-weight: 700 !important;
-  color: #000 !important;
-}
 
 .fdr-logo-svg {
   height: 16px !important;
@@ -5528,26 +5428,7 @@ body.page-id-8 #app {
 }
 
 
-.em-filter-knapp {
-  background: none !important;
-  border: none !important;
-  border-bottom: 2px solid transparent !important;
-  color: #666 !important;
-  cursor: pointer !important;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.12em !important;
-  padding: 16px 16px !important;
-  text-transform: uppercase !important;
-  transition: all 0.2s !important;
-  margin-bottom: -0.5px !important;
-}
-.em-filter-knapp:hover { color: #fff !important; }
-.em-filter-knapp.active {
-  color: #fff !important;
-  border-bottom-color: #fff !important;
-}
+/* (gammal svart-tema filter-knapp borttagen) */
 .em-objekt-innehall {
   background: #000 !important;
   padding: 0 !important;
@@ -5846,9 +5727,6 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 }
 
 /* ── MENY STORLEK ── */
-.fdr-meny-btn {
-  font-size: 18px !important;
-}
 
 /* ── SEKTIONER MED YSL-ANIMATION ── */
 
@@ -6211,40 +6089,62 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   background: #e8e6e1;
   margin-bottom: 16px;
 }
+.em-listing-track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+.em-listing-track::-webkit-scrollbar {
+  display: none;
+}
+.em-listing-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: block;
+  position: relative;
+}
 .em-listing-bild-placeholder {
   position: absolute;
   inset: 0;
   background: #e8e6e1;
 }
 .em-listing-img {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  opacity: 0;
-  transition: opacity 1.0s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-.em-listing-img.em-listing-img--active {
-  opacity: 1;
-}
-.em-listing-kort:hover .em-listing-img--active {
-  transform: scale(1.015);
-  transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 1.0s cubic-bezier(0.25, 0.1, 0.25, 1);
+  object-position: center;
 }
 .em-listing-status {
   position: absolute;
   top: 24px;
   left: 24px;
-  background: #fff;
-  padding: 10px 16px;
+  background: #FFFFFF;
+  height: 29px;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #000;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1;
   text-transform: uppercase;
+  white-space: nowrap;
+  color: #000;
   z-index: 2;
 }
 .em-listing-pilar {
@@ -6253,19 +6153,22 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   right: 24px;
   display: flex;
   gap: 16px;
+  width: 64px;
+  height: 29px;
   z-index: 2;
 }
 .em-listing-pil {
-  width: 36px;
-  height: 36px;
-  background: #fff;
+  width: 24px;
+  height: 29px;
+  background: #FFFFFF;
   border: none;
-  font-size: 16px;
-  font-weight: 400;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  color: #000;
+  transition: background 0.15s ease, color 0.15s ease;
   padding: 0;
   color: #000;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -6276,31 +6179,44 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   background: #000;
   color: #fff;
 }
+.em-listing-pil svg {
+  display: block;
+  width: 6px;
+  height: 12px;
+}
 .em-listing-info {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  color: #000;
 }
 .em-listing-rad {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 4px;
+  gap: 16px;
 }
-.em-listing-adress {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #000;
-}
+.em-listing-adress,
 .em-listing-omrade {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.2px;
+  line-height: 18.7px;
+  text-transform: uppercase;
   color: #000;
 }
 .em-listing-detaljer {
-  font-size: 12px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: -0.2px;
+  line-height: 1;
   color: #000;
-  letter-spacing: 0.05em;
 }
 
 @media (max-width: 900px) {
@@ -6313,9 +6229,9 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   .em-listing-pilar {
     top: 16px;
   }
-  .em-listing-status { left: 16px; padding: 8px 12px; font-size: 11px; }
+  .em-listing-status { left: 16px; top: 16px; padding: 6px 10px; font-size: 12px; height: 26px; }
   .em-listing-pilar { right: 16px; gap: 12px; }
-  .em-listing-pil { width: 32px; height: 32px; }
+  .em-listing-pil { width: 22px; height: 26px; }
 }
 
 /* ════════════════════════════════════
@@ -6611,18 +6527,17 @@ body.page-template-page-objekt #app {
 }
 
 .em-objekt-page {
-  padding-top: 68px;
+  padding-top: 96px;  /* 64px header + 32px gap till filter */
   background: #fff;
   color: #000;
 }
 
-/* Filter-rad — Wrede-stil */
+/* Filter-rad — Figma-spec */
 .em-objekt-page .em-objekt-filter {
-  max-width: 1440px;
-  margin: 0 auto 80px auto;
-  padding: 0 80px;
+  margin: 0 0 32px 0;
+  padding: 0 32px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 56px;
   flex-wrap: wrap;
@@ -6727,7 +6642,7 @@ body.page-template-page-objekt #app {
 
 @media (max-width: 900px) {
   .em-objekt-page {
-    padding-top: 48px;
+    padding-top: 80px;
   }
   .em-objekt-page .em-objekt-filter {
     padding: 0 24px;
@@ -6740,9 +6655,6 @@ body.page-template-page-objekt #app {
 
 
 /* ── HEADER MENY-knapp 10px ────────── */
-.fdr-meny-btn {
-  font-size: 10px !important;
-}
 
 /* ── Override: ingen border under headern någonsin ── */
 header.fdr-header,
@@ -7872,5 +7784,119 @@ header#site-header.fdr-header {
   > .em-textblock-cta {
     margin: 0;
   }
+}
+
+
+
+/* ════════════════════════════════════════════════════════════
+   OBJEKT-FILTER (FIGMA-SPEC)
+   Vänster grupp: typ-filter
+   Höger grupp: sortering + sålda
+   ════════════════════════════════════════════════════════════ */
+
+.em-objekt-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  width: 100%;
+  background: transparent;
+  border: none;
+}
+
+.em-filter-grupp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.em-filter-knapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #F2F2F2;
+  border: none;
+  padding: 6px 12px;
+  height: 29px;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #000000;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.em-filter-knapp:hover {
+  background: #E8E8E8;
+}
+
+.em-filter-knapp.active {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.em-filter-knapp.active:hover {
+  background: #000000;  /* förhindra hover-skiftning på aktiv */
+}
+
+/* Mobil: stack grupperna vertikalt med scroll */
+@media (max-width: 768px) {
+  .em-objekt-filter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 0 32px;
+  }
+  .em-filter-grupp {
+    overflow-x: auto;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .em-filter-grupp::-webkit-scrollbar {
+    display: none;
+  }
+  .em-filter-knapp {
+    font-size: 12px;
+    padding: 6px 10px;
+    flex: 0 0 auto;
+  }
+}
+
+
+
+/* MENY-knapp svart på alla undersidor (startsidan använder blend-mode istället) */
+body:not(.home) .fdr-meny-btn {
+  color: #000 !important;
+}
+
+
+
+/* ════════════════════════════════════════════════════════════
+   MENY-KNAPP — KONSOLIDERAD (Figma-spec)
+   Färg styrs av sida-specifika regler (body.home / body:not(.home))
+   ════════════════════════════════════════════════════════════ */
+.fdr-meny-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: right;
+  /* color sätts av body.home / body:not(.home) regler nedan */
 }
 

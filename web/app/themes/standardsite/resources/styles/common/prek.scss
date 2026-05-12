@@ -8304,3 +8304,40 @@ p.em-detalj-maklare-typ { margin: 0 0 4px 0 !important; }
   border-bottom: none !important;
   border-top: none !important;
 }
+
+
+/* ─── Scroll-snap för förstasidan (desktop only) ─── */
+@media (min-width: 769px) {
+  html {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+  }
+  body.home .em-hero,
+  body.home .em-sektion,
+  body.home .em-karta-sektion {
+    scroll-snap-align: start;
+  }
+}
+
+
+/* ── HEADER OBJEKTSIDA — automatisk invertering via mix-blend-mode ── */
+body.single-fasad_listing header#site-header {
+  background: transparent !important;
+  border-bottom: none !important;
+  mix-blend-mode: difference;
+}
+body.single-fasad_listing header#site-header .fdr-logo-svg {
+  filter: invert(1) !important;
+}
+body.single-fasad_listing header#site-header .fdr-meny-btn {
+  color: #fff !important;
+}
+
+/* X-knapp på galleri — invertering via samma mekanik */
+.em-galleri-expand--open ~ .em-galleri-expand-close,
+.em-galleri-expand--open .em-galleri-expand-close {
+  mix-blend-mode: difference;
+}
+.em-galleri-expand-close svg path {
+  stroke: #fff;
+}

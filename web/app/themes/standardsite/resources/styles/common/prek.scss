@@ -5985,35 +5985,39 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 /* ── KARTA SEKTION ── */
 .em-karta-sektion {
   background: #fff;
-  padding: 0 32px 136px 32px;
-  margin-top: 0;
+  padding: 0 32px 64px 32px;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
 }
 .em-karta-wrap {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 80px;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: 600px 1fr;
-  gap: 64px;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  box-sizing: border-box;
+  width: 100%;
 }
 .em-karta {
-  width: 600px;
-  height: 600px;
-  background: #f2f2f2;
+  width: 100%;
+  aspect-ratio: 672/662;
+  background: #f5f5f5;
 }
 .em-karta-info {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   align-self: center;
+  align-items: flex-start;
 }
 .em-karta-adress {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  line-height: 1.6;
+  letter-spacing: 0;
+  line-height: 100%;
   color: #000;
   margin: 0;
   text-transform: uppercase;
@@ -6022,7 +6026,8 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
+  line-height: 100%;
   color: #000;
   text-decoration: underline;
   text-transform: uppercase;
@@ -6194,6 +6199,8 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   gap: 8px;
   text-decoration: none;
   color: #000;
+  align-items: flex-start;
+  text-align: left;
 }
 .em-listing-rad {
   display: flex;
@@ -6220,6 +6227,8 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   letter-spacing: -0.2px;
   line-height: 1;
   color: #000;
+  text-align: left;
+  justify-content: flex-start;
 }
 
 @media (max-width: 900px) {
@@ -6792,46 +6801,59 @@ header#site-header.fdr-header {
 .em-detalj-hero {
   position: relative;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 80px 40px 0 40px;
+  max-width: none;
+  margin: 56px 0 0 0;
+  padding: 0 32px;
+  box-sizing: border-box;
 }
 .em-detalj-hero-img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16/9;
+  aspect-ratio: 1376/700;
   object-fit: cover;
 }
 .em-detalj-alla-bilder-btn {
   position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 32px;
+  right: 64px;
+  width: 608px;
+  max-width: calc(100% - 128px);
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   border: none;
-  padding: 14px 64px;
+  padding: 0 0 1px 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
   color: #000;
+  text-align: center;
+  box-shadow: 0px -1.01px 4.04px 0px rgba(0,0,0,0.1), 0px 1.01px 4.04px 0px rgba(0,0,0,0.1);
+  cursor: pointer;
   cursor: pointer;
   white-space: nowrap;
 }
 .em-detalj-alla-bilder-btn:hover {
-  background: #f5f5f5;
+  background: #000;
+  color: #fff;
 }
 
 /* ─── INTRO + MÄKLARE (två-kolumn) ─── */
 .em-detalj-intro {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 96px;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 80px 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 0;
+  padding: 64px 32px;
   align-items: start;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 /* Vänster kolumn */
@@ -6839,27 +6861,74 @@ header#site-header.fdr-header {
   min-width: 0;
 }
 .em-detalj-omrade {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 18.7px;
+  text-transform: uppercase;
   color: #000;
-  margin: 0 0 16px 0;
+  margin: 0 0 8px 0;
 }
 .em-detalj-rubrik {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 56px;
+  font-size: clamp(28px, 3.8vw, 62px);
   font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
-  margin: 0 0 48px 0;
+  letter-spacing: -1.4px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0 0 32px 0;
   color: #000;
+  overflow-wrap: normal;
+}
+.em-detalj-saljtext-wrap {
+  position: relative;
+  margin-bottom: 64px;
 }
 .em-detalj-saljtext {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  line-height: 1;
   color: #000;
-  margin-bottom: 48px;
+  max-height: 189px;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+.em-detalj-saljtext-wrap.is-expanded .em-detalj-saljtext {
+  max-height: 10000px;
+}
+.em-detalj-saljtext-fade {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.em-detalj-saljtext-wrap.is-expanded .em-detalj-saljtext-fade {
+  opacity: 0;
+}
+.em-detalj-saljtext-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 16px 0 0 0;
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.em-detalj-saljtext-wrap.has-overflow .em-detalj-saljtext-toggle {
+  display: inline-block;
 }
 .em-detalj-saljtext p {
   margin: 0 0 16px 0;
@@ -6874,7 +6943,29 @@ header#site-header.fdr-header {
 /* Grundfakta (Pris, Avgift osv) */
 .em-detalj-grundfakta {
   margin: 0;
-  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  line-height: 1;
+  color: #000;
+}
+.em-grundfakta-rad {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  padding: 12px 0;
+  }
+.em-grundfakta-rad:last-child {
+  border-bottom: none;
+}
+.em-grundfakta-rad dt {
+  font-weight: 500;
+  margin: 0;
+}
+.em-grundfakta-rad dd {
+  margin: 0;
+  font-weight: 500;
 }
 .em-grundfakta-rad {
   display: grid;
@@ -6894,42 +6985,48 @@ header#site-header.fdr-header {
 
 /* Höger kolumn (mäklare) */
 .em-detalj-intro-hoger {
-  position: sticky;
-  top: 100px;
+  position: static;
 }
 .em-detalj-maklare-bild {
-  display: block;
-  width: 85%;
-  max-width: 340px;
-  height: auto;
-  aspect-ratio: 4/5;
+  width: 100%;
+  aspect-ratio: 672/330;
   object-fit: cover;
-  margin-bottom: 24px;
+  display: block;
+  margin: 0 0 16px 0;
 }
 .em-detalj-maklare-typ {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
   color: #000;
-  margin: 0 0 8px 0;
+  margin: 0;
 }
 .em-detalj-maklare-namn {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  margin: 0 0 24px 0;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
   color: #000;
 }
 .em-detalj-maklare-kontakt {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  margin-bottom: 32px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
   color: #000;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin: 0 0 32px 0;
 }
 .em-detalj-maklare-kontakt a {
   color: #000;
@@ -6943,7 +7040,9 @@ header#site-header.fdr-header {
 
 /* Visningar */
 .em-detalj-visningar {
-  margin-bottom: 24px;
+  margin: 0 0 32px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 32px;
 }
 .em-detalj-visning {
   display: flex;
@@ -6964,11 +7063,13 @@ header#site-header.fdr-header {
   accent-color: #000;
 }
 .em-detalj-visning-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-size: 12px;
-  line-height: 1.5;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  line-height: 1.4;
+  color: #000;
+  text-transform: none;
 }
 .em-detalj-visning-text strong {
   font-weight: 500;
@@ -6981,17 +7082,26 @@ header#site-header.fdr-header {
 
 /* CTA Intresseanmälan */
 .em-detalj-cta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 41px;
+  padding: 12px 0;
+  gap: 10px;
   background: #fff;
-  border: 1px solid #000;
-  padding: 18px 32px;
+  border: none;
+  box-shadow: 0px 1.01px 4.04px rgba(0,0,0,0.1), 0px -1.01px 4.04px rgba(0,0,0,0.1);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
   color: #000;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.2s;
 }
 .em-detalj-cta:hover {
   background: #000;
@@ -7013,21 +7123,23 @@ header#site-header.fdr-header {
 .em-detalj-tva-bilder {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 40px 80px 40px;
+  gap: 32px;
+  margin: 0;
+  padding: 0 32px 64px 32px;
+  box-sizing: border-box;
+  width: 100%;
 }
 .em-detalj-bild-vanster img,
 .em-detalj-bild-hoger img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4/3;
+  aspect-ratio: 672/770;
   object-fit: cover;
 }
 .em-detalj-bild-vanster {
   background: #f5f5f5;
+  border: 1px solid #e5e5e5;
 }
 .em-detalj-bild-vanster img {
   /* Planritning skall vara contain — inte cover — för att inte beskäras */
@@ -7056,17 +7168,20 @@ header#site-header.fdr-header {
 .em-detalj-fakta-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 96px;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 40px 80px 40px;
+  gap: 32px;
+  margin: 0;
+  padding: 0 32px 64px 32px;
+  box-sizing: border-box;
+  width: 100%;
 }
 .em-detalj-fakta-rubrik {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 24px;
-  font-weight: 500;
-  letter-spacing: 0;
-  margin: 0 0 32px 0;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 18.7px;
+  text-transform: uppercase;
+  margin: 0 0 24px 0;
   color: #000;
 }
 .em-detalj-fakta-kolumn dl {
@@ -7077,7 +7192,11 @@ header#site-header.fdr-header {
   display: grid;
   grid-template-columns: 200px 1fr;
   padding: 8px 0;
-  font-size: 13px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  line-height: 1;
   align-items: baseline;
 }
 .em-detalj-fakta-kolumn dt {
@@ -7103,15 +7222,15 @@ header#site-header.fdr-header {
 
 /* ─── WIDE-BILD (stor bild mellan fakta och renoveringar) ─── */
 .em-detalj-wide-bild {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 40px 80px 40px;
+  margin: 0;
+  padding: 0 32px 64px 32px;
+  box-sizing: border-box;
 }
 .em-detalj-wide-bild img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16/9;
+  aspect-ratio: 1376/770;
   object-fit: cover;
 }
 
@@ -7119,40 +7238,68 @@ header#site-header.fdr-header {
 .em-detalj-renovering-dokument {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 96px;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 40px 80px 40px;
+  gap: 32px;
+  margin: 0;
+  padding: 0 32px 64px 32px;
+  box-sizing: border-box;
+  width: 100%;
 }
 .em-detalj-renoveringar-text {
-  font-size: 13px;
-  line-height: 1.7;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  line-height: 17px;
   color: #000;
 }
 .em-detalj-renoveringar-text p {
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
+}
+.em-detalj-renoveringar-text p:last-child {
+  margin-bottom: 0;
 }
 
 /* Dokument-grid (2 kolumner med knappar) */
 .em-detalj-dokument-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 24px;
+}
+.em-detalj-dokument-knapp--full {
+  grid-column: 1 / -1;
+}
+.em-detalj-dokument-knapp--full {
+  grid-column: 1 / -1;
+}
+.em-detalj-dokument-knapp--full {
+  grid-column: 1 / -1;
 }
 .em-detalj-dokument-knapp {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  text-align: center;
-  padding: 18px 16px;
-  border: 1px solid #000;
+  align-items: center;
+  width: 100%;
+  height: 41px;
+  padding: 0;
+  gap: 10px;
+  background: #fff;
+  border: none;
+  box-shadow: 0px 1.01px 4.04px rgba(0,0,0,0.1), 0px -1.01px 4.04px rgba(0,0,0,0.1);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
   color: #000;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+.em-detalj-dokument-knapp > * {
+  margin-top: 2px; /* optisk shift för font-baseline */
 }
 .em-detalj-dokument-knapp:hover {
   background: #000;
@@ -7174,16 +7321,17 @@ header#site-header.fdr-header {
 /* ─── KARTA + ADRESS ─── */
 .em-detalj-karta-sektion {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 80px;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 40px 120px 40px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 0;
+  padding: 0 32px 64px 32px;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
 }
 #em-detalj-karta {
   width: 100%;
-  height: 480px;
+  aspect-ratio: 672/662;
   background: #f5f5f5;
 }
 /* Leaflet zoom-kontroller — gör dem vita/svarta enligt designen */
@@ -7209,27 +7357,40 @@ header#site-header.fdr-header {
 }
 
 .em-detalj-adress {
-  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: center;
+  align-items: flex-start;
+  padding: 0;
 }
 .em-detalj-adress p {
-  margin: 0 0 4px 0;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 100%;
   color: #000;
+  margin: 0;
+  text-transform: uppercase;
 }
 .em-detalj-adress p strong {
-  font-weight: 500;
+  font-weight: 700;
 }
 .em-detalj-hitta {
   display: inline-block;
-  margin-top: 16px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  align-self: flex-start;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 100%;
   color: #000;
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-transform: uppercase;
+}
+.em-detalj-hitta:hover {
+  opacity: 0.6;
 }
 .em-detalj-hitta:hover {
   text-decoration: none;
@@ -7246,16 +7407,19 @@ header#site-header.fdr-header {
 
 /* ─── LIKNANDE OBJEKT ─── */
 .em-detalj-liknande {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 32px 120px 32px;
+  margin: 0;
+  padding: 0 32px 64px 32px;
+  box-sizing: border-box;
+  width: 100%;
 }
 .em-detalj-liknande-rubrik {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  margin: 0 0 32px 0;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 18.7px;
+  text-transform: uppercase;
+  margin: 0 0 16px 0;
   color: #000;
 }
 .em-detalj-liknande-grid {
@@ -7267,17 +7431,18 @@ header#site-header.fdr-header {
   display: block;
   text-decoration: none;
   color: #000;
-  transition: opacity 0.2s;
+  position: relative;
 }
 .em-detalj-liknande-kort:hover {
   opacity: 0.85;
 }
 .em-detalj-liknande-bild {
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 672/590;
   overflow: hidden;
   margin-bottom: 16px;
   background: #f5f5f5;
+  position: relative;
 }
 .em-detalj-liknande-bild img {
   display: block;
@@ -7292,23 +7457,36 @@ header#site-header.fdr-header {
 .em-detalj-liknande-text {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
-.em-detalj-liknande-text p {
+.em-detalj-liknande-text-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.em-detalj-liknande-text-top .em-detalj-liknande-adress,
+.em-detalj-liknande-text-top .em-detalj-liknande-omrade {
   margin: 0;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  line-height: 18.7px;
   text-transform: uppercase;
-  color: #666;
+  color: #000;
 }
-.em-detalj-liknande-text h4 {
+.em-detalj-liknande-fakta {
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: -0.2px;
+  line-height: 100%;
   color: #000;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 900px) {
@@ -7495,17 +7673,18 @@ header#site-header.fdr-header {
   transition: max-height 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .em-galleri-expand--open {
-  max-height: 50000px;
+  max-height: 100000px;
 }
 .em-galleri-expand-inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 80px 40px 0 40px;
+  margin: 0;
+  padding: 80px 32px 0 32px;
+  box-sizing: border-box;
+  position: relative;
 }
 .em-galleri-expand-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 32px;
 }
 .em-galleri-expand-item {
   background: #f5f5f5;
@@ -7517,20 +7696,25 @@ header#site-header.fdr-header {
   height: 480px;
   object-fit: cover;
 }
-/* Mönster: 1 full + 2 halva + 1 full + 2 halva ... */
-.em-galleri-expand-item:nth-child(3n+1) {
+/* Mönster: stor + 2 halva + 2 halva (grupp av 5) */
+.em-galleri-expand-item:nth-child(5n+1) {
   grid-column: 1 / -1;
 }
-.em-galleri-expand-item:nth-child(3n+1) img {
-  height: 700px;
+.em-galleri-expand-item:nth-child(5n+1) img {
+  aspect-ratio: 1376/770;
+  height: auto;
+}
+.em-galleri-expand-item img {
+  aspect-ratio: 672/590;
+  height: auto;
 }
 
 @media (max-width: 900px) {
   .em-galleri-expand-inner { padding: 48px 32px 0 32px; }
   .em-galleri-expand-grid { grid-template-columns: 1fr; gap: 8px; }
   .em-galleri-expand-item img { height: 360px; }
-  .em-galleri-expand-item:nth-child(3n+1) { grid-column: auto; }
-  .em-galleri-expand-item:nth-child(3n+1) img { height: 360px; }
+  .em-galleri-expand-item:nth-child(5n+1) { grid-column: auto; }
+  .em-galleri-expand-item:nth-child(5n+1) img { aspect-ratio: 672/590; height: auto; }
 }
 
 
@@ -7925,4 +8109,198 @@ body:not(.home) .fdr-meny-btn {
 h3.em-t-h3,
 h3.em-team-namn {
   font-weight: 700 !important;
+}
+
+
+/* Sidebar margin-overrides — specificitet vinst */
+h2.em-detalj-maklare-namn { margin: 0 0 24px 0 !important; }
+p.em-detalj-maklare-typ { margin: 0 0 4px 0 !important; }
+.em-detalj-maklare-bild { margin-bottom: 16px !important; }
+.em-detalj-maklare-kontakt { margin: 0 0 32px 0 !important; }
+
+
+/* Renoveringar + Dokument — kolumn-spacing 25px */
+.em-detalj-renoveringar .em-detalj-fakta-rubrik,
+.em-detalj-renovering-dokument > div > .em-detalj-fakta-rubrik {
+  margin: 0 0 25px 0;
+}
+
+
+/* Renoveringar - läs mer (clampar text, expand vid klick) */
+.em-detalj-renoveringar-wrap {
+  position: relative;
+}
+.em-detalj-renoveringar-wrap .em-detalj-renoveringar-text {
+  max-height: 189px;
+  overflow: hidden;
+  position: relative;
+}
+.em-detalj-renoveringar-wrap.is-expanded .em-detalj-renoveringar-text {
+  max-height: none;
+}
+.em-detalj-renoveringar-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  pointer-events: none;
+  z-index: 1;
+}
+.em-detalj-renoveringar-wrap.is-expanded .em-detalj-renoveringar-fade {
+  display: none;
+}
+.em-detalj-renoveringar-toggle {
+  display: none;
+  margin-top: 16px;
+  background: #fff;
+  border: none;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #000;
+  cursor: pointer;
+}
+.em-detalj-renoveringar-wrap.has-overflow .em-detalj-renoveringar-toggle {
+  display: inline-block;
+}
+
+
+/* Liknande objekt - status-badge */
+.em-detalj-liknande-badge {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px 11px 24px;
+  background: #fff;
+  box-shadow: 0px 1.01px 4.04px rgba(0,0,0,0.1), 0px -1.01px 4.04px rgba(0,0,0,0.1);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #000;
+}
+.em-detalj-liknande-pilar {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+.em-detalj-liknande-pil {
+  width: 41px;
+  height: 41px;
+  background: #fff;
+  border: none;
+  box-shadow: 0px 1.01px 4.04px rgba(0,0,0,0.1), 0px -1.01px 4.04px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* Liknande objekt på detalj-sida - alltid öppen */
+#similar-listings-grid {
+  display: block;
+  max-height: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: visible !important;
+}
+
+/* Liknande objekt - override grid och brödtext */
+#similar-listings-grid .em-listings-grid-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  width: 100%;
+}
+#similar-listings-grid .em-listing-detaljer {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+/* Liknande objekt - område högerställd */
+#similar-listings-grid .em-listing-rad {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+#similar-listings-grid .em-listing-omrade {
+  text-align: right;
+}
+
+/* Liknande objekt - tvinga rad+info till 100% bredd så område hamnar långt höger */
+#similar-listings-grid .em-listing-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  align-items: stretch;
+}
+#similar-listings-grid .em-listing-rad {
+  width: 100%;
+}
+
+/* Stäng-X för galleri-expand */
+.em-galleri-expand-close {
+  position: fixed;
+  top: 40px;
+  right: 32px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.em-galleri-expand--open ~ .em-galleri-expand-close,
+.em-galleri-expand--open .em-galleri-expand-close {
+  display: flex;
+}
+.em-galleri-expand--open ~ .em-galleri-expand-close,
+.em-galleri-expand--open .em-galleri-expand-close {
+  display: flex;
+}
+.em-galleri-expand-close svg {
+  width: 18px;
+  height: 18px;
+}
+.em-galleri-expand-close:hover {
+  opacity: 0.6;
+}
+
+/* Grundfakta - ta bort gråa streck mellan rader */
+.em-detalj-grundfakta dl > div,
+.em-grundfakta-rad {
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
 }

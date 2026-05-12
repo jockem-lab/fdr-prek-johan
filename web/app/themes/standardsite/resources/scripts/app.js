@@ -737,3 +737,52 @@ document.querySelectorAll('.fdr-hero').forEach(hero => {
     initCarousels();
   }
 })();
+
+// Säljtext accordion
+document.addEventListener('DOMContentLoaded', function() {
+  const wraps = document.querySelectorAll('.em-detalj-saljtext-wrap');
+  wraps.forEach(wrap => {
+    const text = wrap.querySelector('.em-detalj-saljtext');
+    const toggle = wrap.querySelector('.em-detalj-saljtext-toggle');
+    if (!text || !toggle) return;
+    
+    // Kolla om innehållet faktiskt är längre än max-height
+    if (text.scrollHeight > text.clientHeight + 5) {
+      wrap.classList.add('has-overflow');
+    }
+    
+    toggle.addEventListener('click', function() {
+      const expanded = wrap.classList.toggle('is-expanded');
+      toggle.textContent = expanded ? 'VISA MINDRE' : 'LÄS MER';
+    });
+  });
+});
+
+// Renoveringar - läs mer toggle
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.em-detalj-renoveringar-wrap').forEach(function(wrap) {
+    var text = wrap.querySelector('.em-detalj-renoveringar-text');
+    var toggle = wrap.querySelector('.em-detalj-renoveringar-toggle');
+    if (!text || !toggle) return;
+    if (text.scrollHeight > text.clientHeight + 1) {
+      wrap.classList.add('has-overflow');
+    }
+    toggle.addEventListener('click', function() {
+      wrap.classList.toggle('is-expanded');
+      toggle.textContent = wrap.classList.contains('is-expanded') ? 'VISA MINDRE' : 'LÄS MER';
+    });
+  });
+});
+
+// Galleri-expand: ESC stänger
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    var galleri = document.getElementById('em-galleri-expand');
+    if (galleri && galleri.classList.contains('em-galleri-expand--open')) {
+      if (typeof emCloseGalleri === 'function') emCloseGalleri();
+      else {
+        galleri.classList.remove('em-galleri-expand--open');
+      }
+    }
+  }
+});

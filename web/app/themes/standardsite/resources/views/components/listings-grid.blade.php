@@ -51,11 +51,12 @@
             <span class="em-listing-adress">{{ mb_strtoupper($listing->address, 'UTF-8') }}</span>
             <span class="em-listing-omrade">{{ mb_strtoupper($listing->type, 'UTF-8') }}</span>
           </div>
-          <div class="em-listing-detaljer">
-            @if($listing->area){{ $listing->area }}@endif
-            @if($listing->price) &nbsp;&nbsp; {{ $listing->price }}@endif
-            @if($listing->rooms) &nbsp;&nbsp; {{ $listing->rooms }}@endif
-          </div>
+          @php
+            $facts = array_filter([$listing->area ?? '', $listing->price ?? '', $listing->rooms ?? '']);
+          @endphp
+          @if(!empty($facts))
+          <div class="em-listing-detaljer">{!! implode(' &nbsp;&nbsp; ', array_map('e', $facts)) !!}</div>
+          @endif
         </a>
       </div>
     @endforeach

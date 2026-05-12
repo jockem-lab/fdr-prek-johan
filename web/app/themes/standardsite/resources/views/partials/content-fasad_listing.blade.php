@@ -7,6 +7,31 @@ function fasad_unserialize($raw) {
     return is_string($s1) ? @unserialize($s1) : $s1;
 }
 
+if (!function_exists('em_link_arsredovisning')) {
+    function em_link_arsredovisning($text, $documents) {
+        if (empty($text)) return '';
+        $arsred_url = null;
+        if (is_array($documents)) {
+            foreach ($documents as $doc) {
+                if (stripos($doc->alias, 'rsredovisning') !== false) {
+                    $arsred_url = $doc->href;
+                    break;
+                }
+            }
+        }
+        if ($arsred_url) {
+            $text = preg_replace_callback(
+                '/\b(årsredovisning(?:en)?(?:\s+\d{4})?)\b/iu',
+                function($m) use ($arsred_url) {
+                    return '<a href="' . esc_url($arsred_url) . '" target="_blank" rel="noopener">' . esc_html($m[1]) . '</a>';
+                },
+                $text
+            );
+        }
+        return $text;
+    }
+}
+
 // ─── Location ───
 $loc      = fasad_unserialize(get_post_meta($post_id, '_fasad_location', true));
 $address  = ($loc && !empty($loc->address)) ? $loc->address : get_the_title($post_id);
@@ -15,8 +40,8 @@ $zipCode  = ($loc && !empty($loc->zipCode) && is_string($loc->zipCode)) ? $loc->
 $area     = ($loc && !empty($loc->area) && is_string($loc->area)) ? $loc->area : '';
 $district = ($loc && !empty($loc->district) && is_string($loc->district)) ? $loc->district : '';
 $subarea  = $area ?: $district ?: $city;
-$lat      = ($loc && !empty($loc->coordinate->latitude)) ? $loc->coordinate->latitude : null;
-$lng      = ($loc && !empty($loc->coordinate->longitude)) ? $loc->coordinate->longitude : null;
+$lat      = ($loc && !empty($loc->lat)) ? $loc->lat : (($loc && !empty($loc->coordinate->latitude)) ? $loc->coordinate->latitude : null);
+$lng      = ($loc && !empty($loc->lon)) ? $loc->lon : (($loc && !empty($loc->coordinate->longitude)) ? $loc->coordinate->longitude : null);
 
 // ─── Sales title (för h1 om det finns) ───
 $salesTitle = get_post_meta($post_id, '_fasad_salesTitle', true) ?: $address;
@@ -60,13 +85,22 @@ $built_year = ($build && !empty($build->constructionYear)) ? $build->constructio
 // ─── Images via bildproxy ───
 $imgs_raw = get_post_meta($post_id, '_fasad_images', true);
 $imgs     = fasad_unserialize($imgs_raw);
-$images   = [];
+$images        = [];
+$planritningar = [];
+$objekt_bilder = [];
 if (is_array($imgs)) {
     foreach ($imgs as $img) {
         if (!empty($img->variants) && is_array($img->variants)) {
             foreach ($img->variants as $v) {
                 if (($v->type ?? '') === 'highres' && !empty($v->path)) {
-                    $images[] = rest_url('prek/v1/bildproxy?url=') . urlencode($v->path);
+                    $url = rest_url('prek/v1/bildproxy?url=') . urlencode($v->path);
+                    $cat_id = ($img->category->id ?? 0);
+                    $images[] = $url;
+                    if ($cat_id === 2) {
+                        $planritningar[] = $url;
+                    } else {
+                        $objekt_bilder[] = $url;
+                    }
                     break;
                 }
             }
@@ -129,9 +163,35 @@ $showings = array_values(array_filter($showings, function($s) {
 // ─── Documents ───
 $docs_obj  = fasad_unserialize(get_post_meta($post_id, '_fasad_documents', true));
 $documents = [];
-if ($docs_obj && !empty($docs_obj->listingDocuments)) {
-    foreach ($docs_obj->listingDocuments as $doc) {
-        $documents[] = (object)['alias' => $doc->alias ?? '', 'href' => $doc->href ?? ''];
+if ($docs_obj) {
+    // Objekt-specifika dokument
+    if (!empty($docs_obj->listingDocuments)) {
+        foreach ($docs_obj->listingDocuments as $doc) {
+            $documents[] = (object)['alias' => $doc->alias ?? '', 'href' => $doc->href ?? ''];
+        }
+    }
+    // Föreningens dokument (årsredovisning, stadgar etc)
+    if (!empty($docs_obj->apartmentCooperative)) {
+        foreach ($docs_obj->apartmentCooperative as $doc) {
+            $documents[] = (object)['alias' => $doc->alias ?? '', 'href' => $doc->href ?? ''];
+        }
+    }
+}
+
+// Snyggare display-namn för långa filnamn
+$doc_label_map = [
+    'info undersökningsplikt bostadsrätt' => 'Undersökningsplikt',
+    'info fast och lös egendom' => 'Fast och lös egendom',
+    'info budgivning' => 'Budgivning',
+    'info försäljningen' => 'Försäljningen',
+];
+foreach ($documents as $doc) {
+    $clean = preg_replace('/\.pdf$/i', '', $doc->alias);
+    $key = strtolower(trim($clean));
+    if (isset($doc_label_map[$key])) {
+        $doc->alias = $doc_label_map[$key];
+    } else {
+        $doc->alias = $clean;
     }
 }
 
@@ -155,10 +215,13 @@ $desc_text = '';
 $renovations = '';
 if (is_array($desc_data)) {
     foreach ($desc_data as $d) {
-        $alias = strtolower($d->type->alias ?? '');
+        $cat_id = $d->category->id ?? 0;
+        $cat_alias = strtolower($d->category->alias ?? '');
         $text = $d->text ?? ($d->content ?? '');
+        // Säljtext (Interiör = category 1)
         if (!$desc_text && !empty($text)) $desc_text = $text;
-        if (stripos($alias, 'renover') !== false || stripos($alias, 'genomfö') !== false) {
+        // Renoveringar / Förening (category id 5)
+        if ($cat_id === 5 || stripos($cat_alias, 'renover') !== false || stripos($cat_alias, 'fören') !== false) {
             $renovations = $text;
         }
     }
@@ -180,25 +243,100 @@ $similar_listings = [];
 foreach ($similar as $s) {
     $sloc = fasad_unserialize(get_post_meta($s->ID, '_fasad_location', true));
     $simgs = fasad_unserialize(get_post_meta($s->ID, '_fasad_images', true));
-    $sim_first_img = '';
-    if (is_array($simgs) && !empty($simgs[0]->variants)) {
-        foreach ($simgs[0]->variants as $v) {
-            if (($v->type ?? '') === 'highres' && !empty($v->path)) {
-                $sim_first_img = rest_url('prek/v1/bildproxy?url=') . urlencode($v->path);
-                break;
+    // Hämta ALLA bilder för carousel-stöd
+    $sim_images = [];
+    if (is_array($simgs)) {
+        foreach ($simgs as $img) {
+            if (!empty($img->variants) && is_array($img->variants)) {
+                foreach ($img->variants as $v) {
+                    if (($v->type ?? '') === 'highres' && !empty($v->path)) {
+                        $sim_images[] = rest_url('prek/v1/bildproxy?url=') . urlencode($v->path);
+                        break;
+                    }
+                }
             }
         }
     }
+    $sim_first_img = $sim_images[0] ?? '';
     $sim_addr = ($sloc && !empty($sloc->address)) ? $sloc->address : $s->post_title;
     $sim_subarea = '';
     if ($sloc) {
         $sim_subarea = $sloc->area ?? $sloc->district ?? $sloc->city ?? '';
     }
+
+    // Fakta: storlek, fee, rum (säker hantering)
+    $sim_size = fasad_unserialize(get_post_meta($s->ID, '_fasad_size', true));
+    $sim_eco = fasad_unserialize(get_post_meta($s->ID, '_fasad_economy', true));
+    $sim_facts = [];
+    // Pris (om bud finns)
+    if ($sim_eco && isset($sim_eco->price->primary->amount) && is_numeric($sim_eco->price->primary->amount) && $sim_eco->price->primary->amount > 0) {
+        $sim_facts[] = number_format((float)$sim_eco->price->primary->amount, 0, ',', '.') . ' kr';
+    }
+    // Storlek
+    $sim_area_val = null;
+    if ($sim_size) {
+        if (isset($sim_size->area) && is_numeric($sim_size->area)) $sim_area_val = $sim_size->area;
+        elseif (isset($sim_size->area->amount) && is_numeric($sim_size->area->amount)) $sim_area_val = $sim_size->area->amount;
+        elseif (isset($sim_size->living) && is_numeric($sim_size->living)) $sim_area_val = $sim_size->living;
+        elseif (isset($sim_size->living->amount) && is_numeric($sim_size->living->amount)) $sim_area_val = $sim_size->living->amount;
+    }
+    if ($sim_area_val) $sim_facts[] = (int)$sim_area_val . ' kvm';
+    // Avgift
+    if ($sim_eco && isset($sim_eco->apartment->fee) && is_numeric($sim_eco->apartment->fee) && $sim_eco->apartment->fee > 0) {
+        $sim_facts[] = number_format((float)$sim_eco->apartment->fee, 0, ',', '.') . ' kr/mån';
+    }
+    // Rum
+    $sim_rooms_val = null;
+    if ($sim_size) {
+        if (isset($sim_size->rooms) && is_numeric($sim_size->rooms)) $sim_rooms_val = $sim_size->rooms;
+        elseif (isset($sim_size->rooms->amount) && is_numeric($sim_size->rooms->amount)) $sim_rooms_val = $sim_size->rooms->amount;
+    }
+    if ($sim_rooms_val) $sim_facts[] = $sim_rooms_val . ' rum';
+
+    // Status per liknande objekt
+    $sim_status = '';
+    $sim_sold = get_post_meta($s->ID, '_fasad_sold', true) === '1';
+    $sim_preview = fasad_unserialize(get_post_meta($s->ID, '_fasad_preview', true));
+    $sim_bids = fasad_unserialize(get_post_meta($s->ID, '_fasad_bids', true));
+    $sim_showings_raw = fasad_unserialize(get_post_meta($s->ID, '_fasad_showings', true));
+    $sim_upcoming_show = null;
+    if (is_array($sim_showings_raw)) {
+        foreach ($sim_showings_raw as $sh) {
+            if (!empty($sh->startDate) && strtotime($sh->startDate) > time() - 3600) {
+                $sim_upcoming_show = $sh; break;
+            }
+        }
+    }
+    if ($sim_upcoming_show) {
+        $sim_status = 'VISNING ' . date('j/n', strtotime($sim_upcoming_show->startDate));
+    } elseif ($sim_preview && !empty($sim_preview->activated)) {
+        $sim_status = 'FÖRHANDSVISNING';
+    } elseif (is_array($sim_bids) && count($sim_bids) > 0) {
+        $sim_status = 'BUDGIVNING PÅGÅR';
+    } elseif ($sim_sold) {
+        $sim_status = 'SÅLD';
+    }
+
+    // Bygg fält som listings-grid-komponenten förväntar sig
+    $sim_area_str = $sim_area_val ? ((int)$sim_area_val . ' kvm') : '';
+    $sim_price_str = '';
+    if ($sim_eco && isset($sim_eco->price->primary->amount) && is_numeric($sim_eco->price->primary->amount) && $sim_eco->price->primary->amount > 0) {
+        $sim_price_str = number_format((float)$sim_eco->price->primary->amount, 0, ',', '.') . ' kr';
+    } elseif ($sim_eco && isset($sim_eco->apartment->fee) && is_numeric($sim_eco->apartment->fee) && $sim_eco->apartment->fee > 0) {
+        $sim_price_str = number_format((float)$sim_eco->apartment->fee, 0, ',', '.') . ' kr/mån';
+    }
+    $sim_rooms_str = $sim_rooms_val ? ($sim_rooms_val . ' rum') : '';
+
     $similar_listings[] = (object)[
-        'url'     => get_permalink($s->ID),
-        'address' => mb_strtoupper($sim_addr),
-        'area'    => $sim_subarea,
+        'slug'    => $s->post_name,
+        'address' => mb_strtoupper($sim_addr, 'UTF-8'),
+        'type'    => mb_strtoupper($sim_subarea, 'UTF-8'),
+        'status'  => $sim_status,
+        'images'  => $sim_images,
         'image'   => $sim_first_img,
+        'area'    => $sim_area_str,
+        'price'   => $sim_price_str,
+        'rooms'   => $sim_rooms_str,
     ];
 }
 
@@ -240,7 +378,11 @@ if (!empty($showings)) {
       @endif
       <h1 class="em-detalj-rubrik">{{ mb_strtoupper($salesTitle, "UTF-8") }}</h1>
       @if($desc_text)
+        <div class="em-detalj-saljtext-wrap">
         <div class="em-detalj-saljtext">{!! $desc_text !!}</div>
+        <div class="em-detalj-saljtext-fade"></div>
+        <button class="em-detalj-saljtext-toggle" type="button">LÄS MER</button>
+      </div>
       @endif
 
       <dl class="em-detalj-grundfakta">
@@ -314,10 +456,10 @@ if (!empty($showings)) {
   @if(count($images) >= 3)
   <section class="em-detalj-tva-bilder">
     <div class="em-detalj-bild-vanster">
-      <img src="{{ $images[1] }}" alt="Bild 2">
+      <img src="{{ !empty($planritningar) ? $planritningar[0] : $images[1] }}" alt="Planlösning">
     </div>
     <div class="em-detalj-bild-hoger">
-      <img src="{{ $images[2] }}" alt="Bild 3">
+      <img src="{{ !empty($objekt_bilder[1]) ? $objekt_bilder[1] : $images[2] }}" alt="Bild 3">
       <button class="em-detalj-alla-bilder-btn em-detalj-alla-bilder-btn--inline" onclick="emOpenGalleri()">ALLA BILDER</button>
     </div>
   </section>
@@ -360,37 +502,44 @@ if (!empty($showings)) {
   </section>
   @endif
 
+  @if($renovations || !empty($documents))
   <section class="em-detalj-renovering-dokument">
-    @if($renovations)
     <div class="em-detalj-renoveringar">
-      <h3 class="em-detalj-fakta-rubrik">GENOMFÖRDA RENOVERINGAR</h3>
-      <div class="em-detalj-renoveringar-text">{!! nl2br(e($renovations)) !!}</div>
+      @if($renovations)
+        <h3 class="em-detalj-fakta-rubrik">GENOMFÖRDA RENOVERINGAR</h3>
+        <div class="em-detalj-renoveringar-wrap">
+          <div class="em-detalj-renoveringar-text">
+            {!! em_link_arsredovisning($renovations, $documents) !!}
+            <div class="em-detalj-renoveringar-fade"></div>
+          </div>
+          <button type="button" class="em-detalj-renoveringar-toggle">LÄS MER</button>
+        </div>
+      @endif
     </div>
-    @endif
 
-    @if(!empty($documents))
     <div class="em-detalj-dokument">
-      <h3 class="em-detalj-fakta-rubrik">DOKUMENT PDF</h3>
-      <div class="em-detalj-dokument-grid">
-        @foreach($documents as $doc)
-          <a href="{{ $doc->href }}" target="_blank" class="em-detalj-dokument-knapp">
-            {{ strtoupper($doc->alias) }}
-          </a>
-        @endforeach
-      </div>
+      @if(!empty($documents))
+        <h3 class="em-detalj-fakta-rubrik">DOKUMENT PDF</h3>
+        <div class="em-detalj-dokument-grid">
+          @foreach($documents as $doc)
+            <a href="{{ $doc->href }}" target="_blank" class="em-detalj-dokument-knapp">
+              {{ strtoupper($doc->alias) }}
+            </a>
+          @endforeach
+        </div>
+      @endif
     </div>
-    @endif
   </section>
+  @endif
 
   {{-- ════════ KARTA + ADRESS ════════ --}}
   @if($lat && $lng)
   <section class="em-detalj-karta-sektion">
     <div id="em-detalj-karta" data-lat="{{ $lat }}" data-lng="{{ $lng }}"></div>
     <div class="em-detalj-adress">
-      <p><strong>{{ strtoupper($address) }}</strong></p>
-      @if($zipCode || $city)
-        <p>{{ trim($zipCode . ' ' . strtoupper($city)) }}</p>
-      @endif
+      <p>
+        {{ strtoupper($address) }}@if($zipCode || $city)<br>{{ trim($zipCode . ' ' . strtoupper($city)) }}@endif
+      </p>
       <a href="https://www.google.com/maps/dir/?api=1&destination={{ urlencode($address . ' ' . $city) }}" target="_blank" class="em-detalj-hitta">HITTA HIT</a>
     </div>
   </section>
@@ -400,10 +549,26 @@ if (!empty($showings)) {
   @if(count($images) > 1)
   <section class="em-galleri-expand" id="em-galleri-expand">
     <div class="em-galleri-expand-inner">
+      <button class="em-galleri-expand-close" type="button" onclick="emCloseGalleri()" aria-label="Stäng galleri">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L17 17M17 1L1 17" stroke="#000" stroke-width="1.5"/>
+        </svg>
+      </button>
       <div class="em-galleri-expand-grid">
-        @foreach($images as $i => $img)
+        @php
+          // Bygg sorterad bildlista: objekt-bilder först, planritning sist
+          $galleri_bilder = !empty($objekt_bilder) ? $objekt_bilder : $images;
+          if (!empty($planritningar)) {
+              // Lägg planritningar sist (om de inte redan är där)
+              $galleri_bilder = array_merge(
+                  array_diff($galleri_bilder, $planritningar),
+                  $planritningar
+              );
+          }
+        @endphp
+        @foreach($galleri_bilder as $i => $img)
           <div class="em-galleri-expand-item">
-            <img src="{{ $img }}" alt="Bild {{ $i+1 }}" loading="lazy">
+            <img src="{{ $img }}" alt="Bild {{ $i + 1 }}">
           </div>
         @endforeach
       </div>
@@ -415,19 +580,7 @@ if (!empty($showings)) {
   @if(!empty($similar_listings))
   <section class="em-detalj-liknande">
     <h3 class="em-detalj-liknande-rubrik">LIKNANDE OBJEKT</h3>
-    <div class="em-detalj-liknande-grid">
-      @foreach($similar_listings as $sim)
-        <a href="{{ $sim->url }}" class="em-detalj-liknande-kort">
-          <div class="em-detalj-liknande-bild">
-            <img src="{{ $sim->image }}" alt="{{ $sim->address }}">
-          </div>
-          <div class="em-detalj-liknande-text">
-            <p>{{ $sim->area }}</p>
-            <h4>{{ $sim->address }}</h4>
-          </div>
-        </a>
-      @endforeach
-    </div>
+    <x-listings-grid :listings="$similar_listings" id="similar-listings-grid" />
   </section>
   @endif
 
@@ -438,12 +591,16 @@ if (!empty($showings)) {
 function emOpenGalleri() {
   var el = document.getElementById('em-galleri-expand');
   if (!el) return;
-  el.classList.toggle('em-galleri-expand--open');
-  if (el.classList.contains('em-galleri-expand--open')) {
-    setTimeout(function() {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  }
+  el.classList.add('em-galleri-expand--open');
+  setTimeout(function() {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+function emCloseGalleri() {
+  var el = document.getElementById('em-galleri-expand');
+  if (!el) return;
+  el.classList.remove('em-galleri-expand--open');
+  document.querySelector('.em-detalj-hero')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // Leaflet karta

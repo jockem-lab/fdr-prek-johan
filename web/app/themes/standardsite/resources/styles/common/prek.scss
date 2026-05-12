@@ -5664,16 +5664,7 @@ footer
 
 
 /* Undersidor — vit header, svart text */
-body:not(.home) header#site-header {
-  background: #fff !important;
-  border-bottom: none !important;
-}
-body:not(.home) header#site-header .fdr-logo-svg {
-  filter: invert(0) !important;
-}
-body:not(.home) header#site-header .fdr-meny-btn {
-  color: #000 !important;
-}
+/* (body:not(.home) header-block borttaget — universell invertering används istället) */
 
 
 
@@ -8340,4 +8331,25 @@ body.single-fasad_listing header#site-header .fdr-meny-btn {
 }
 .em-galleri-expand-close svg path {
   stroke: #fff;
+}
+
+
+/* Undantag: meny-overlay öppen → header ska INTE inverteras */
+body.menu-open header#site-header,
+header#site-header.menu-active {
+  mix-blend-mode: normal;
+}
+
+
+/* ── HEADER UNIVERSELL INVERTERING (sista regeln - vinner över allt) ── */
+html body header#site-header {
+  background: transparent !important;
+  border-bottom: none !important;
+  mix-blend-mode: difference;
+}
+html body header#site-header .fdr-logo-svg {
+  filter: invert(1) !important;
+}
+html body header#site-header .fdr-meny-btn {
+  color: #fff !important;
 }

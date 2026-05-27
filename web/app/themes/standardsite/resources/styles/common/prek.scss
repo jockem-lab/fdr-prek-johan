@@ -6738,40 +6738,34 @@ header#site-header.fdr-header {
 #em-splash-logo {
   display: inline-flex;
   flex-direction: row;
-  align-items: baseline;
-  gap: 18px;
-  transition: opacity 0.8s ease;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 1.0s ease;
 }
 #em-splash-text {
-  width: 138px;
   height: 19px;
+  width: auto;
   display: block;
   filter: invert(1);
   opacity: 0;
-  transition: opacity 1.4s ease;
+  transition: opacity 2.8s ease;
 }
 #em-splash-text.em-splash-text--visible {
   opacity: 1;
 }
 #em-splash-tagline {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #fff;
-  text-transform: uppercase;
-  white-space: nowrap;
+  height: 19px;
+  width: auto;
+  display: block;
+  filter: invert(1);
   opacity: 0;
   max-width: 0;
   overflow: hidden;
-  line-height: 1;
-  position: relative;
-  top: 0px;
-  transition: opacity 2.0s ease 0.3s, max-width 2.0s cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 3.0s ease 0.6s, max-width 3.0s cubic-bezier(0.4,0,0.2,1);
 }
 #em-splash-tagline.em-splash-tagline--visible {
   opacity: 1;
-  max-width: 280px;
+  max-width: 120px;
 }
 #em-splash-logo.em-splash-logo--fade-out {
   opacity: 0;

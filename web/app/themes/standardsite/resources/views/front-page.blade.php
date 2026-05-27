@@ -5,8 +5,8 @@
 {{-- SPLASH SCREEN --}}
 <div id="em-splash">
   <div id="em-splash-logo">
-    <img id="em-splash-text" src="/app/uploads/ett-makleri-logo.svg" alt="ETT MÄKLERI">
-    <div id="em-splash-tagline">FASTIGHETSMÄKLERI</div>
+    <img id="em-splash-text" src="/app/uploads/ett-logo.svg" alt="ETT">
+    <img id="em-splash-tagline" src="/app/uploads/makleri-logo.svg" alt="MÄKLERI">
   </div>
 </div>
 

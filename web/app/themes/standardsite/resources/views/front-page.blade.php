@@ -26,9 +26,13 @@
       <img src="/app/uploads/hero/placeholder2.jpg" alt="Lägenheter">
     </div>
     <div class="em-sektion-text">
-      <p class="em-sektion-eyebrow">TILL SALU</p>
-      <h2 class="em-sektion-rubrik">LÄGENHETER</h2>
-      <p class="em-sektion-beskrivning">Ett kurerat urval av lägenheter i Östermalm, Södermalm, Vasastan och på Kungsholmen. Tidlösa hem med tydlig karaktär. Utöver publicerade objekt förmedlar vi även bostäder underhand, med samma omsorg och diskretion.</p>
+      <div class="em-sektion-head-copy">
+        <div class="em-sektion-headline">
+          <p class="em-sektion-eyebrow">TILL SALU</p>
+          <h2 class="em-sektion-rubrik">LÄGENHETER</h2>
+        </div>
+        <p class="em-sektion-beskrivning">Ett kurerat urval av lägenheter i Östermalm, Södermalm, Vasastan och på Kungsholmen. Tidlösa hem med tydlig karaktär. Utöver publicerade objekt förmedlar vi även bostäder underhand, med samma omsorg och diskretion.</p>
+      </div>
       <a href="#" class="em-sektion-btn em-listings-toggle" data-target="lagenheter-grid" aria-expanded="false">UTFORSKA VÅRA LÄGENHETER</a>
     </div>
   </section>
@@ -39,15 +43,9 @@
   {{-- Karusell 1 --}}
   <div class="em-karusell">
     <div class="em-karusell-track">
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder2.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder2.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder2.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
     </div>
   </div>
 
@@ -57,9 +55,13 @@
       <img src="/app/uploads/hero/placeholder3.jpg" alt="Hus">
     </div>
     <div class="em-sektion-text">
-      <p class="em-sektion-eyebrow">TILL SALU</p>
-      <h2 class="em-sektion-rubrik">HUS</h2>
-      <p class="em-sektion-beskrivning">Ett kurerat urval av hus i Stockholm och skärgården. Permanenta boenden och landställen. Villor, radhus och fritidshus. Arkitektur, läge och helhet i fokus.</p>
+      <div class="em-sektion-head-copy">
+        <div class="em-sektion-headline">
+          <p class="em-sektion-eyebrow">TILL SALU</p>
+          <h2 class="em-sektion-rubrik">HUS</h2>
+        </div>
+        <p class="em-sektion-beskrivning">Ett kurerat urval av hus i Stockholm och skärgården. Permanenta boenden och landställen. Villor, radhus och fritidshus. Arkitektur, läge och helhet i fokus.</p>
+      </div>
       <a href="{{ home_url('/objekt') }}" class="em-sektion-btn">UTFORSKA VÅRA HUS</a>
     </div>
   </section>
@@ -67,15 +69,9 @@
   {{-- Karusell 2 --}}
   <div class="em-karusell">
     <div class="em-karusell-track">
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/hero2.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/start-hero.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/hero2.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/start-hero.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/hero2.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/start-hero.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
     </div>
   </div>
 
@@ -85,9 +81,13 @@
       <img src="/app/uploads/hero/placeholder2.jpg" alt="Underhand" style="filter:brightness(0.95);">
     </div>
     <div class="em-sektion-text">
-      <p class="em-sektion-eyebrow">INTRESSEANMÄLAN</p>
-      <h2 class="em-sektion-rubrik">UNDERHAND</h2>
-      <p class="em-sektion-beskrivning">En del av de bostäder vi förmedlar når aldrig den öppna marknaden, detta i enlighet med våra uppdragsgivares önskemål. ETT MÄKLERI disponerar över ett omfattande kontaktnät och en köpstark databas som ständigt hålls uppdaterad.</p>
+      <div class="em-sektion-head-copy">
+        <div class="em-sektion-headline">
+          <p class="em-sektion-eyebrow">INTRESSEANMÄLAN</p>
+          <h2 class="em-sektion-rubrik">UNDERHAND</h2>
+        </div>
+        <p class="em-sektion-beskrivning">En del av de bostäder vi förmedlar når aldrig den öppna marknaden, detta i enlighet med våra uppdragsgivares önskemål. ETT MÄKLERI disponerar över ett omfattande kontaktnät och en köpstark databas som ständigt hålls uppdaterad.</p>
+      </div>
       <a href="{{ home_url('/underhand') }}" class="em-sektion-btn">MAILA OSS</a>
     </div>
   </section>
@@ -95,15 +95,9 @@
   {{-- Karusell 3 --}}
   <div class="em-karusell">
     <div class="em-karusell-track">
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder2.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder2.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder1.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder2.jpg" alt=""></div>
     </div>
   </div>
 
@@ -113,9 +107,13 @@
       <img src="/app/uploads/hero/placeholder3.jpg" alt="Anlita oss">
     </div>
     <div class="em-sektion-text">
-      <p class="em-sektion-eyebrow">VÄRDERING AV BOSTAD</p>
-      <h2 class="em-sektion-rubrik">ANLITA OSS</h2>
-      <p class="em-sektion-beskrivning">Överväger ni att sälja och önskar en värdering av ert hem? Vi ser fram emot att träffa er för ett helt förutsättningslöst möte. Vänligen fyll i formuläret nedan, så återkommer vi snarast möjligt för att diskutera era specifika behov.</p>
+      <div class="em-sektion-head-copy">
+        <div class="em-sektion-headline">
+          <p class="em-sektion-eyebrow">VÄRDERING AV BOSTAD</p>
+          <h2 class="em-sektion-rubrik">ANLITA OSS</h2>
+        </div>
+        <p class="em-sektion-beskrivning">Överväger ni att sälja och önskar en värdering av ert hem? Vi ser fram emot att träffa er för ett helt förutsättningslöst möte. Vänligen fyll i formuläret nedan, så återkommer vi snarast möjligt för att diskutera era specifika behov.</p>
+      </div>
       <a href="#" class="em-sektion-btn em-anlita-toggle" data-target="anlita-form" aria-expanded="false">FYLL I FORMULÄRET</a>
     </div>
   </section>
@@ -126,15 +124,9 @@
   {{-- Karusell 4 --}}
   <div class="em-karusell">
     <div class="em-karusell-track">
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/start-hero.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/hero2.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
       <div class="em-karusell-bild"><img src="/app/uploads/hero/start-hero.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/hero2.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/start-hero.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/hero2.jpg" alt=""></div>
-      <div class="em-karusell-bild"><img src="/app/uploads/hero/placeholder3.jpg" alt=""></div>
     </div>
   </div>
 

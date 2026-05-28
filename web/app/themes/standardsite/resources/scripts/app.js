@@ -786,3 +786,237 @@ document.addEventListener('keydown', function(e) {
     }
   }
 });
+
+// === Mjuk section-scrolling: snappar EFTER att användaren slutat scrolla ===
+(function() {
+  if (window.innerWidth < 769) return;
+  if (!document.body.classList.contains('home')) return;
+
+  var stops = [];
+  function collectStops() {
+    stops = [];
+    ['.em-hero', '.em-sektion', '.em-karusell', '.em-karta-sektion'].forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) { stops.push(el); });
+    });
+    stops.sort(function(a, b) {
+      return a.getBoundingClientRect().top + window.scrollY - (b.getBoundingClientRect().top + window.scrollY);
+    });
+  }
+
+  var scrollTimer = null;
+  var isAnimating = false;
+  var lastSnapTime = 0;
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function smoothScrollTo(targetY, duration) {
+    isAnimating = true;
+    var startY = window.scrollY;
+    var diff = targetY - startY;
+    var startTime = performance.now();
+    function step(now) {
+      var elapsed = now - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, startY + diff * easeOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+      else { isAnimating = false; lastSnapTime = performance.now(); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function findClosestStop() {
+    var viewportCenter = window.scrollY + window.innerHeight / 2;
+    var closest = null;
+    var minDist = Infinity;
+    for (var i = 0; i < stops.length; i++) {
+      var rect = stops[i].getBoundingClientRect();
+      var elTop = rect.top + window.scrollY;
+      var elCenter = elTop + rect.height / 2;
+      var dist = Math.abs(elCenter - viewportCenter);
+      if (dist < minDist) {
+        minDist = dist;
+        // Mål-scrollY så att elementets centrum hamnar i viewportens centrum
+        closest = elCenter - window.innerHeight / 2;
+      }
+    }
+    return { y: closest, dist: minDist };
+  }
+
+  function onScrollEnd() {
+    if (isAnimating) return;
+    if (performance.now() - lastSnapTime < 600) return; // efter snap, vänta
+
+    var result = findClosestStop();
+    if (result.y === null) return;
+
+    // Snappa bara om vi är nära (inom 40% av viewport) men inte exakt på stop
+    var viewportH = window.innerHeight;
+    if (result.dist > 8 && result.dist < viewportH * 0.4) {
+      smoothScrollTo(result.y, 700);
+    }
+  }
+
+  function onScroll() {
+    if (isAnimating) return;
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(onScrollEnd, 180); // 180ms idle = "användaren slutade scrolla"
+  }
+
+  collectStops();
+  window.addEventListener('resize', collectStops);
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+// === Karusell: infinite drag-loop (JS duplicerar unika bilder) ===
+(function() {
+  document.querySelectorAll('.em-karusell').forEach(function(karusell) {
+    var track = karusell.querySelector('.em-karusell-track');
+    if (!track) return;
+
+    // Spara originalbilderna (unika uppsättning)
+    var originals = Array.prototype.slice.call(track.children);
+    var uniqueCount = originals.length;
+    if (uniqueCount === 0) return;
+
+    // Duplicera tills tracken är minst 3× skärmbredd (för buffer åt båda håll)
+    function ensureFilled() {
+      var needed = window.innerWidth * 3;
+      // Rensa till originalen först
+      while (track.children.length > uniqueCount) {
+        track.removeChild(track.lastChild);
+      }
+      // Duplicera
+      var i = 0;
+      while (track.scrollWidth < needed && i < 50) {
+        originals.forEach(function(node) {
+          track.appendChild(node.cloneNode(true));
+        });
+        i++;
+      }
+    }
+
+    var oneSetWidth = 0; // bredd av EN unik uppsättning
+    function measure() {
+      if (track.children[uniqueCount]) {
+        oneSetWidth = track.children[uniqueCount].offsetLeft;
+      } else {
+        oneSetWidth = track.scrollWidth;
+      }
+    }
+
+    ensureFilled();
+    measure();
+    window.addEventListener('load', function() { ensureFilled(); measure(); });
+    window.addEventListener('resize', function() { ensureFilled(); measure(); });
+    setTimeout(function() { ensureFilled(); measure(); }, 500);
+
+    var offset = 0;
+    var isDown = false;
+    var startX = 0, startOffset = 0;
+    var velocity = 0, lastX = 0, lastTime = 0;
+    var rafId = null;
+
+    function wrap() {
+      if (oneSetWidth <= 0) return;
+      // Loopa offset inom en uppsättnings bredd — sömlöst eftersom seten är identiska
+      while (offset <= -oneSetWidth) offset += oneSetWidth;
+      while (offset > 0) offset -= oneSetWidth;
+    }
+
+    function applyTransform() {
+      wrap();
+      track.style.transform = 'translate3d(' + offset + 'px, 0, 0)';
+    }
+
+    var itemStep = 0;
+    function measureStep() {
+      if (track.children[0] && track.children[1]) {
+        itemStep = track.children[1].offsetLeft - track.children[0].offsetLeft;
+      }
+    }
+    measureStep();
+    window.addEventListener('resize', measureStep);
+    setTimeout(measureStep, 500);
+
+    function snapToNearest() {
+      if (itemStep <= 0) { rafId = null; return; }
+      var target = Math.round(offset / itemStep) * itemStep;
+      var diff = target - offset;
+      offset += diff * 0.18;
+      if (Math.abs(diff) < 0.5) {
+        offset = target;
+        applyTransform();
+        rafId = null;
+        return;
+      }
+      applyTransform();
+      rafId = requestAnimationFrame(snapToNearest);
+    }
+
+    function momentumLoop() {
+      // När momentum saktat ner tillräckligt → snappa till närmaste bild
+      if (Math.abs(velocity) < 2) {
+        rafId = requestAnimationFrame(snapToNearest);
+        return;
+      }
+      offset += velocity;
+      velocity *= 0.93;
+      applyTransform();
+      rafId = requestAnimationFrame(momentumLoop);
+    }
+
+    karusell.addEventListener('pointerdown', function(e) {
+      isDown = true;
+      karusell.classList.add('is-dragging');
+      startX = e.clientX;
+      startOffset = offset;
+      lastX = e.clientX;
+      lastTime = performance.now();
+      velocity = 0;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      try { karusell.setPointerCapture(e.pointerId); } catch(_) {}
+    });
+
+    karusell.addEventListener('pointermove', function(e) {
+      if (!isDown) return;
+      var dx = e.clientX - startX;
+      // Cappa dragget till max 2.5 bilder från startpunkten (med lite gummi bortom)
+      if (itemStep > 0) {
+        var maxDrag = itemStep * 2.5;
+        if (dx > maxDrag) dx = maxDrag + (dx - maxDrag) * 0.2;
+        if (dx < -maxDrag) dx = -maxDrag + (dx + maxDrag) * 0.2;
+      }
+      offset = startOffset + dx;
+      var before = offset;
+      wrap();
+      if (offset !== before) startOffset += (offset - before);
+      track.style.transform = 'translate3d(' + offset + 'px, 0, 0)';
+      var now = performance.now();
+      var dt = now - lastTime;
+      if (dt > 0) velocity = (e.clientX - lastX) / dt * 16;
+      lastX = e.clientX;
+      lastTime = now;
+    });
+
+    function endDrag(e) {
+      if (!isDown) return;
+      isDown = false;
+      karusell.classList.remove('is-dragging');
+      try { karusell.releasePointerCapture(e.pointerId); } catch(_) {}
+
+      // Cappa momentum hårt — max ~1 bilds extra glid efter drag-cap
+      if (itemStep > 0) {
+        var maxDist = itemStep * 1.0;
+        var projectedDist = Math.abs(velocity) / (1 - 0.93);
+        if (projectedDist > maxDist) {
+          velocity *= maxDist / projectedDist;
+        }
+      }
+
+      rafId = requestAnimationFrame(momentumLoop);
+    }
+    karusell.addEventListener('pointerup', endDrag);
+    karusell.addEventListener('pointercancel', endDrag);
+    karusell.addEventListener('pointerleave', endDrag);
+  });
+})();

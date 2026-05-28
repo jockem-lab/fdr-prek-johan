@@ -50,6 +50,15 @@ class FrontPage extends PrekComposer
                 if ($price) {
                     $price = number_format($price, 0, ',', ' ') . ' kr';
                 }
+                $fee = $economy->fee->amount ?? '';
+                if ($fee) {
+                    $fee = number_format($fee, 0, ',', ' ') . ' kr/mån';
+                }
+
+                // Område: district (Vasastan/Östermalm) först, fallback city
+                $district = $location->district ?? '';
+                $city = $location->city ?? '';
+                $omrade = $district ?: $city;
 
                 // Hämta bilder — alla, inte bara första
                 $images_raw = get_post_meta($post_id, '_fasad_images', true);
@@ -89,43 +98,43 @@ class FrontPage extends PrekComposer
                 $type_obj = $type_raw ? @unserialize($type_raw) : null;
                 $type = $type_obj->alias ?? '';
 
-                // Status-logik: Visning DD/M, FÖRHANDSVISNING, eller tom
+                // Status-logik enligt kundens prio: budgivning > visning > förhandsvisning > activityCategory
                 $status_alias = '';
 
-                // 1. Kolla showings — kommande visning?
-                $showings_raw = get_post_meta($post_id, '_fasad_showings', true);
-                $showings = $showings_raw ? @unserialize($showings_raw) : [];
-                if (is_array($showings) && !empty($showings)) {
-                    $now = time();
-                    $upcoming = null;
-                    foreach ($showings as $show) {
-                        if (!empty($show->startDate)) {
-                            $ts = strtotime($show->startDate);
-                            if ($ts && $ts > $now && ($upcoming === null || $ts < $upcoming)) {
-                                $upcoming = $ts;
+                // PRIO 1: Pågående budgivning
+                $bids_raw = get_post_meta($post_id, '_fasad_bids', true);
+                $bids = $bids_raw ? @unserialize($bids_raw) : [];
+                if (is_array($bids) && !empty($bids)) {
+                    $status_alias = 'BUDGIVNING PÅGÅR';
+                }
+
+                // PRIO 2: Kommande visning
+                if (!$status_alias) {
+                    $showings_raw = get_post_meta($post_id, '_fasad_showings', true);
+                    $showings = $showings_raw ? @unserialize($showings_raw) : [];
+                    if (is_array($showings) && !empty($showings)) {
+                        $now = time();
+                        $upcoming = null;
+                        foreach ($showings as $show) {
+                            if (!empty($show->startDate)) {
+                                $ts = strtotime($show->startDate);
+                                if ($ts && $ts > $now && ($upcoming === null || $ts < $upcoming)) {
+                                    $upcoming = $ts;
+                                }
                             }
                         }
-                    }
-                    if ($upcoming) {
-                        $status_alias = 'VISNING ' . date('j/n', $upcoming);
+                        if ($upcoming) {
+                            $status_alias = 'VISNING ' . date('j/n', $upcoming);
+                        }
                     }
                 }
 
-                // 2. Annars: förhandsvisning?
+                // PRIO 3: Förhandsvisning (fallback)
                 if (!$status_alias) {
                     $preview_raw = get_post_meta($post_id, '_fasad_preview', true);
                     $preview = $preview_raw ? @unserialize($preview_raw) : null;
                     if (is_object($preview) && !empty($preview->activated)) {
                         $status_alias = 'FÖRHANDSVISNING';
-                    }
-                }
-
-                // 3. Bids — budgivning pågår?
-                if (!$status_alias) {
-                    $bids_raw = get_post_meta($post_id, '_fasad_bids', true);
-                    $bids = $bids_raw ? @unserialize($bids_raw) : [];
-                    if (is_array($bids) && !empty($bids)) {
-                        $status_alias = 'BUDGIVNING PÅGÅR';
                     }
                 }
 
@@ -151,9 +160,11 @@ class FrontPage extends PrekComposer
                     'slug'    => get_post_field('post_name', $post_id),
                     'address' => $address,
                     'price'   => $price,
+                    'fee'     => $fee,
                     'type'    => $type,
                     'rooms'   => $rooms,
                     'area'    => $area,
+                    'omrade'  => $omrade,
                     'image'   => $image,
                     'images'  => $image_list,
                     'status'  => $status_alias,

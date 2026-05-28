@@ -49,13 +49,17 @@
         <a href="{{ home_url('/objekt/' . $listing->slug) }}" class="em-listing-info">
           <div class="em-listing-rad">
             <span class="em-listing-adress">{{ mb_strtoupper($listing->address, 'UTF-8') }}</span>
-            <span class="em-listing-omrade">{{ mb_strtoupper($listing->type, 'UTF-8') }}</span>
+            <span class="em-listing-omrade">{{ mb_strtoupper($listing->omrade ?? $listing->type ?? '', 'UTF-8') }}</span>
           </div>
           @php
-            $facts = array_filter([$listing->area ?? '', $listing->price ?? '', $listing->rooms ?? '']);
+            $facts = array_filter([$listing->area ?? '', $listing->rooms ?? '', $listing->price ?? '', $listing->fee ?? '']);
           @endphp
           @if(!empty($facts))
-          <div class="em-listing-detaljer">{!! implode(' &nbsp;&nbsp; ', array_map('e', $facts)) !!}</div>
+          <div class="em-listing-detaljer">
+            @foreach($facts as $fact)
+              <span>{{ $fact }}</span>
+            @endforeach
+          </div>
           @endif
         </a>
       </div>

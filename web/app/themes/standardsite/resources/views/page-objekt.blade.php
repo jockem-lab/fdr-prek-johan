@@ -11,12 +11,18 @@ function em_unserialize($raw) {
 function em_extract_listing($pid) {
     $loc = em_unserialize(get_post_meta($pid, '_fasad_location', true));
     $address = ($loc && !empty($loc->address)) ? $loc->address : get_the_title($pid);
-    $area = ($loc && !empty($loc->area)) ? $loc->area : (($loc && !empty($loc->city)) ? $loc->city : '');
+    // Område: district (Vasastan/Östermalm) först, fallback till city eller area
+    $district = ($loc && !empty($loc->district)) ? $loc->district : '';
+    $city = ($loc && !empty($loc->city)) ? $loc->city : '';
+    $area = $district ?: (($loc && !empty($loc->area)) ? $loc->area : $city);
 
     $eco = em_unserialize(get_post_meta($pid, '_fasad_economy', true));
     $price = '';
     if ($eco && !empty($eco->price->primary->amount))
         $price = number_format($eco->price->primary->amount, 0, ',', ' ') . ' kr';
+    $fee = '';
+    if ($eco && !empty($eco->fee->amount))
+        $fee = number_format($eco->fee->amount, 0, ',', ' ') . ' kr/mån';
 
     $size = em_unserialize(get_post_meta($pid, '_fasad_size', true));
     $rooms = ($size && !empty($size->rooms)) ? $size->rooms . ' ' . ($size->roomsInformation ?? 'rum') : '';
@@ -108,6 +114,7 @@ function em_extract_listing($pid) {
         'area'     => $area_size,
         'omrade'   => $area,
         'price'    => $price,
+        'fee'      => $fee,
         'type'     => $type,
         'rooms'    => $rooms,
         'image'    => $image_list[0] ?? '',

@@ -28,6 +28,8 @@
     "@roots/sage": "6.8.0"
   },
   "dependencies": {
+    "baseline-browser-mapping": "^2.10.33",
+    "caniuse-lite": "^1.0.30001793",
     "glightbox": "^3.3.1",
     "leaflet": "^1.9.4",
     "lodash": "^4.17.21",

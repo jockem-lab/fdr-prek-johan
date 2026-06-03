@@ -9,8 +9,8 @@
         <a href="mailto:info@ettmakleri.se">INFO@ETTMAKLERI.SE</a>
       </div>
       <div class="fdr-footer-col">
-        <a href="#">VÅRA OMDÖMEN ›</a>
-        <a href="#">NYHETSBREV PRENUMERATION ›</a>
+        <a href="#" class="em-link-arrow"><span>VÅRA OMDÖMEN</span><svg class="em-link-chevron" width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L5.5 6L1.5 10.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="20"/></svg></a>
+        <a href="#" class="em-link-arrow"><span>NYHETSBREV PRENUMERATION</span><svg class="em-link-chevron" width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L5.5 6L1.5 10.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="20"/></svg></a>
       </div>
       <div class="fdr-footer-col">
         <a href="#">INTEGRITETSPOLICY</a>

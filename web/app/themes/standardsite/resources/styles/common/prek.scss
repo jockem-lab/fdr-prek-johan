@@ -5743,9 +5743,10 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 
 
 /* ── SEKTIONER ── */
+.main > .em-sektioner,
 .em-sektioner {
   background: #fff;
-  padding: 136px 0 0 0;
+  padding: 64px 0 0 0;
 }
 .em-sektion {
   display: flex;
@@ -5851,12 +5852,14 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 }
 
 /* ── KARUSELL ── */
+html, body {
+  overflow-x: clip;
+}
 .em-karusell {
-  margin: 168px auto 136px auto;
+  margin: 136px 0 168px calc(50% - 50vw);
   overflow: hidden;
   position: relative;
-  width: 100%;
-  max-width: 1440px;
+  width: 100vw;
   cursor: grab;
   user-select: none;
 }
@@ -5877,8 +5880,8 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 }
 .em-karusell-bild {
   flex: 0 0 auto;
-  width: 502px;
-  aspect-ratio: 4 / 5;
+  width: 410px;
+  aspect-ratio: 410 / 493;
   overflow: hidden;
   scroll-snap-align: start;
 }
@@ -5893,6 +5896,7 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 
 /* ── MOBIL ── */
 @media (max-width: 900px) {
+  .main > .em-sektioner,
   .em-sektioner {
     padding: 80px 0 0 0;
   }
@@ -5934,19 +5938,50 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   padding: 0 0 0 94px; /* samma padding som cols-container i Figma */
   box-sizing: border-box;
 }
-/* Logo och social linjeras med mittkolumnen: col1-bredd (198) + gap (64) = 262 */
-.fdr-footer-logo {
-  margin-left: 262px;
+/* Logo och social linjeras med mittkolumnen via spegelkolumn (samma flex som cols-raden) */
+.fdr-footer-logo,
+.fdr-footer-social {
+  margin-left: 0;
+  padding-left: 0;
+}
+.fdr-footer-logo::before,
+.fdr-footer-social::before {
+  content: "";
+  display: block;
+  width: 198px;
+  margin-right: 64px;
+  flex-shrink: 0;
 }
 .fdr-footer-social {
-  margin-left: 262px;
+  display: flex;
+  align-items: center;
 }
-@media (max-width: 1440px) {
-  .fdr-footer-logo,
-  .fdr-footer-social {
-    /* På smalare viewports skalar cols-container ner, så proportionellt */
-    padding-left: calc(391 / 975 * 100%);
-  }
+.fdr-footer-social::before {
+  margin-right: 44px; /* 64 - gap 20 */
+}
+.fdr-footer-social {
+  justify-content: center;
+}
+.fdr-footer-social a {
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fdr-footer-social a svg {
+  width: 16px;
+  height: 16px;
+}
+.fdr-footer-social a:nth-of-type(2) svg {
+  width: 14px;
+  height: 14px;
+}
+.fdr-footer-social a:nth-of-type(3) svg {
+  width: 12px;
+  height: 14px;
 }
 .fdr-footer-logo {
   display: flex;
@@ -6044,6 +6079,9 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 }
 
 /* ── KARTA SEKTION ── */
+.em-sektioner > .em-karusell:last-child {
+  margin-bottom: 0;
+}
 .em-karta-sektion {
   background: #fff;
   padding: 136px 32px 136px 32px;
@@ -6055,7 +6093,8 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 648px 1fr;
+  justify-content: start;
   gap: 64px;
   align-items: start;
   box-sizing: border-box;
@@ -6063,7 +6102,7 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 }
 .em-karta {
   width: 100%;
-  aspect-ratio: 672/662;
+  aspect-ratio: 648/662;
   background: #f5f5f5;
 }
 .em-karta-info {

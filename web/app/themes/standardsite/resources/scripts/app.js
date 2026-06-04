@@ -807,7 +807,7 @@ document.addEventListener('keydown', function(e) {
   var isAnimating = false;
   var lastSnapTime = 0;
 
-  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 5); }
 
   function smoothScrollTo(targetY, duration) {
     isAnimating = true;
@@ -851,15 +851,15 @@ document.addEventListener('keydown', function(e) {
 
     // Snappa bara om vi är nära (inom 40% av viewport) men inte exakt på stop
     var viewportH = window.innerHeight;
-    if (result.dist > 8 && result.dist < viewportH * 0.4) {
-      smoothScrollTo(result.y, 700);
+    if (result.dist > 8 && result.dist < viewportH * 0.25) {
+      smoothScrollTo(result.y, 1100);
     }
   }
 
   function onScroll() {
     if (isAnimating) return;
     clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(onScrollEnd, 180); // 180ms idle = "användaren slutade scrolla"
+    scrollTimer = setTimeout(onScrollEnd, 380); // 380ms idle = "användaren slutade scrolla"
   }
 
   collectStops();
@@ -937,7 +937,7 @@ document.addEventListener('keydown', function(e) {
         var ref = document.querySelector('.em-sektion img');
         if (ref) {
           var sekt = ref.closest('.em-sektion');
-          var targetLeft = sekt.getBoundingClientRect().left + ref.parentNode.offsetLeft;
+          var targetLeft = sekt.getBoundingClientRect().left + ref.parentNode.offsetLeft + ref.parentNode.offsetWidth - w;
           phase = (((targetLeft - karusell.getBoundingClientRect().left) % itemStep) + itemStep) % itemStep;
         } else {
           var gap = itemStep - w;

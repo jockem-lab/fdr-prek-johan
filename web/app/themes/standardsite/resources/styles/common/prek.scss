@@ -6324,8 +6324,10 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   max-height: 3000px;
 }
 .em-anlita-form-inner {
-  padding: 168px 222px 168px 222px;
+  padding: 168px 0;
   box-sizing: border-box;
+  width: 1036px;
+  margin-left: calc((100% - 996px) / 2);
 }
 .em-anlita-form-grid {
   display: flex;
@@ -6360,10 +6362,15 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 }
 .em-anlita-form-field {
   width: 100%;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
 }
 .em-anlita-form-field input,
 .em-anlita-form-field textarea {
   box-sizing: border-box;
+  display: block;
+  margin: 0;
   width: 100%;
   padding: 16px 0 16px 16px;
   background: #FFFFFF;
@@ -6477,7 +6484,7 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 
 
 @media (max-width: 900px) {
-  .em-anlita-form-inner { padding: 48px 32px 0 32px; }
+  .em-anlita-form-inner { padding: 48px 32px 0 32px; margin-left: 0; width: 100%; }
   .em-anlita-form-grid { flex-direction: column; gap: 48px; }
   .em-anlita-form-col { width: 100%; }
 }

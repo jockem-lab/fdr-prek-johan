@@ -5957,10 +5957,7 @@ html, body {
   align-items: center;
 }
 .fdr-footer-social::before {
-  margin-right: 44px; /* 64 - gap 20 */
-}
-.fdr-footer-social {
-  justify-content: center;
+  margin-right: 57px; /* 64 - gap 20 + 13 (centrering: (logo 138 - ikoner 112) / 2) */
 }
 .fdr-footer-social a {
   box-sizing: border-box;

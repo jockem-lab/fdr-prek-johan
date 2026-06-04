@@ -929,9 +929,24 @@ document.addEventListener('keydown', function(e) {
     }
 
     var itemStep = 0;
+    var phase = 0;
     function measureStep() {
       if (track.children[0] && track.children[1]) {
         itemStep = track.children[1].offsetLeft - track.children[0].offsetLeft;
+        var w = track.children[0].offsetWidth;
+        var ref = document.querySelector('.em-sektion img');
+        if (ref) {
+          var sekt = ref.closest('.em-sektion');
+          var targetLeft = sekt.getBoundingClientRect().left + ref.parentNode.offsetLeft;
+          phase = (((targetLeft - karusell.getBoundingClientRect().left) % itemStep) + itemStep) % itemStep;
+        } else {
+          var gap = itemStep - w;
+          phase = (karusell.offsetWidth / 2 + gap / 2) % itemStep;
+        }
+        if (!isDown && itemStep > 0) {
+          offset = Math.round((offset - phase) / itemStep) * itemStep + phase;
+          applyTransform();
+        }
       }
     }
     measureStep();
@@ -940,7 +955,7 @@ document.addEventListener('keydown', function(e) {
 
     function snapToNearest() {
       if (itemStep <= 0) { rafId = null; return; }
-      var target = Math.round(offset / itemStep) * itemStep;
+      var target = Math.round((offset - phase) / itemStep) * itemStep + phase;
       var diff = target - offset;
       offset += diff * 0.18;
       if (Math.abs(diff) < 0.5) {

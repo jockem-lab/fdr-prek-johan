@@ -5852,13 +5852,13 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 
 /* ── KARUSELL ── */
 .em-karusell {
-  margin: 168px 0 136px 0;
+  margin: 168px auto 136px auto;
   overflow: hidden;
   position: relative;
   width: 100%;
+  max-width: 1440px;
   cursor: grab;
   user-select: none;
-  margin: 168px 0 136px 0;
 }
 .em-karusell.is-dragging {
   cursor: grabbing;
@@ -5872,12 +5872,12 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
 .em-karusell-track {
   display: flex;
   gap: 64px;
-  padding: 0 80px;
+  padding: 0;
   width: max-content;
 }
 .em-karusell-bild {
   flex: 0 0 auto;
-  width: 480px;
+  width: 502px;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   scroll-snap-align: start;

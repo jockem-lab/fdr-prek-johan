@@ -10,11 +10,12 @@
 <div class="fdr-menu-overlay" id="fdr-menu-overlay">
   <div class="fdr-menu-bg" id="fdr-menu-bg"></div>
   <div class="fdr-menu-panel">
-    <button class="fdr-menu-close" id="fdr-meny-close" aria-label="Stäng meny">&#x2715;</button>
+    <button class="fdr-menu-close" id="fdr-meny-close" aria-label="Stäng meny"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L17 17M17 1L1 17" stroke="#000" stroke-width="1.5"/></svg></button>
     <nav class="fdr-menu-nav">
       <a href="{{ home_url('/objekt') }}">Lägenheter</a>
       <a href="{{ home_url('/objekt') }}">Hus</a>
       <a href="{{ home_url('/underhand') }}">Underhand</a>
+      <a href="{{ home_url('/') }}#anlita-form">Anlita oss</a>
       <a href="{{ home_url('/om-oss') }}">Om oss</a>
     </nav>
     <div class="fdr-menu-footer-links">

@@ -550,52 +550,8 @@ add_action('pre_get_posts', function($query) {
     }
 }, 5);
 
-// Hantera _sync endpoint direkt
-add_action('template_redirect', function() {
-    global $wp;
-    $request = trim($wp->request, '/');
-    
-    if ($request === '_sync') {
-        status_header(200);
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "PREK Sync starting...\n";
-        flush();
-        
-        $plugins_dir = WP_CONTENT_DIR . '/plugins/';
-        
-        // Ladda alla plugins autoloaders
-        foreach (['fasad-bridge', 'fasad-api-connect', 'prek-web'] as $plugin) {
-            $autoload = $plugins_dir . $plugin . '/vendor/autoload.php';
-            if (file_exists($autoload)) {
-                require_once $autoload;
-                echo "Loaded: $plugin\n";
-            }
-        }
-        
-        // Ladda plugin-huvudfiler
-        foreach (['fasad-bridge/FasadBridge.php', 'fasad-api-connect/FasadApiConnect.php', 'prek-web/PrekWeb.php'] as $plugin_file) {
-            $file = $plugins_dir . $plugin_file;
-            if (file_exists($file) && !class_exists(basename(dirname($file)))) {
-                require_once $file;
-            }
-        }
-        
-        if (class_exists('FasadBridge\\Includes\\PublicSettings')) {
-            echo "Running sync...\n";
-            flush();
-            // Rensa lock innan sync
-            delete_option('fasad-sync-lock');
-            $public = new \FasadBridge\Includes\PublicSettings('fasad-bridge', '1.0.0');
-            // force='all' tvingar uppdatering av alla objekt
-            $force = isset($_GET['force']) ? 'all' : false;
-            $public->doSync(['force' => $force, 'lock' => false]);
-            echo "Sync complete.\n";
-        } else {
-            echo "FasadBridge not found.\n";
-        }
-        die();
-    }
-}, 1);
+// (_sync-endpoint borttagen 5 juni 2026 - pluginen aktiveras pa riktigt, workaround orsakade klasskrock)
+
 
 // Uppdatera _fasad_lastsync efter sync
 add_action('fasad_bridge_post_sync', function($params, $syncResult) {

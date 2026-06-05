@@ -5753,16 +5753,17 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0 222px;
+  padding: 0 24px;
   gap: 64px;
   position: relative;
   box-sizing: border-box;
-  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .em-sektion-bild {
   width: 502px;
-  height: 590px;
-  flex-shrink: 0;
+  aspect-ratio: 502 / 590;
   overflow: hidden;
   transform: translateX(50%);
   transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -5777,8 +5778,7 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   display: block;
 }
 .em-sektion-text {
-  width: 430px;
-  flex-shrink: 0;
+  max-width: 430px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -5823,6 +5823,7 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   line-height: 17px;
   letter-spacing: -0.2px;
   color: #000;
+  width: 100%;
   margin: 0;
   width: 414px;
 }
@@ -5830,7 +5831,7 @@ body.home header#site-header.fdr-header--over-hero .fdr-meny-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 430px;
+  width: 100%;
   padding: 12px 0;
   background: #FFFFFF;
   box-shadow: 0px 1.01px 4.04px rgba(0, 0, 0, 0.1), 0px -1.01px 4.04px rgba(0, 0, 0, 0.1);
@@ -5856,10 +5857,11 @@ html, body {
   overflow-x: clip;
 }
 .em-karusell {
-  margin: 136px 0 168px calc(50% - 50vw);
+  margin: 136px auto 168px auto;
   overflow: hidden;
   position: relative;
-  width: 100vw;
+  width: 100%;
+  max-width: 1440px;
   cursor: grab;
   user-select: none;
 }
@@ -6081,17 +6083,17 @@ html, body {
 }
 .em-karta-sektion {
   background: #fff;
-  padding: 136px 32px 136px 32px;
-  margin: 0;
+  padding: 136px 24px;
+  margin: 0 auto !important;
   box-sizing: border-box;
   width: 100%;
+  max-width: 1440px;
 }
 .em-karta-wrap {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 648px 1fr;
-  justify-content: start;
+  grid-template-columns: calc(50% - 32px) 1fr;
   gap: 64px;
   align-items: start;
   box-sizing: border-box;
@@ -8487,4 +8489,33 @@ img.fdr-footer-logo-svg {
   .fdr-menu-nav { padding: 48px 32px 0 32px !important; margin-top: 0 !important; }
   .fdr-menu-footer-links { padding: 0 32px 48px 32px !important; }
   .fdr-menu-nav a { font-size: 32px !important; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   GLOBAL MAXBREDD 1440 (kundbesked juni 2026)
+   Karusellen undantas medvetet - full-bleed enligt Figma.
+   ════════════════════════════════════════════════════════════ */
+.fdr-header-inner {
+  max-width: 1440px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.em-objekt-page,
+.em-listings-grid,
+.em-karta-sektion,
+.em-detalj-intro,
+.em-detalj-tva-bilder,
+.em-detalj-fakta-grid,
+.em-detalj-wide-bild,
+.em-detalj-renovering-dokument,
+.em-detalj-karta-sektion,
+.em-detalj-liknande,
+.em-galleri-expand-inner,
+.fdr-hero,
+.em-hero,
+.fdr-om-hero,
+.em-detalj-hero {
+  max-width: 1440px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }

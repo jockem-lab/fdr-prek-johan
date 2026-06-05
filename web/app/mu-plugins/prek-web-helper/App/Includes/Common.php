@@ -141,7 +141,7 @@ class Common
                     $listingId = !empty($wp->query_vars[$fasadStarter->cptName]) ? $wp->query_vars[$fasadStarter->cptName] : null;
                 }
             }
-        } elseif ($hasBridge) {
+        } elseif ($hasBridge && class_exists('PrekWeb\\Includes\\Fasad')) {
             $isSingleListing = \PrekWeb\Includes\Fasad::isSingleListing();
             if ($isSingleListing) {
                 if ($wpId = get_the_ID()) {

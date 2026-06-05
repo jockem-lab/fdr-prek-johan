@@ -62,7 +62,7 @@
         </div>
         <p class="em-sektion-beskrivning">Ett kurerat urval av hus i Stockholm och skärgården. Permanenta boenden och landställen. Villor, radhus och fritidshus. Arkitektur, läge och helhet i fokus.</p>
       </div>
-      <a href="{{ home_url('/objekt') }}" class="em-sektion-btn">UTFORSKA VÅRA HUS</a>
+      <a href="{{ home_url('/objekt') }}?typ=hus" class="em-sektion-btn">UTFORSKA VÅRA HUS</a>
     </div>
   </section>
 

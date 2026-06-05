@@ -107,9 +107,24 @@ function em_extract_listing($pid) {
         $category = 'annat';
     }
 
+    $price_raw = ($eco && !empty($eco->price->primary->amount)) ? (float) $eco->price->primary->amount : 0;
+    $area_raw = 0;
+    if (!empty($size->area->areas) && is_array($size->area->areas)) {
+        foreach ($size->area->areas as $a) {
+            if (!empty($a->type) && $a->type === 'Boarea' && !empty($a->size)) {
+                $area_raw = (float) str_replace(',', '.', $a->size);
+                break;
+            }
+        }
+    }
+    $published_raw = (int) strtotime(get_post_meta($pid, '_fasad_firstPublished', true) ?: get_post_field('post_date', $pid));
+
     return (object)[
         'id'       => $pid,
         'slug'     => get_post_field('post_name', $pid),
+        'price_raw' => $price_raw,
+        'area_raw'  => $area_raw,
+        'published_raw' => $published_raw,
         'address'  => $address,
         'area'     => $area_size,
         'omrade'   => $area,
@@ -188,9 +203,9 @@ foreach ($listings as $l) {
   <div class="em-objekt-filter">
     {{-- Vänster: typ-filter --}}
     <div class="em-filter-grupp em-filter-grupp--typ">
-      <button class="em-filter-knapp active" data-filter-typ="alla">ALLA</button>
       <button class="em-filter-knapp" data-filter-typ="lagenhet">LÄGENHETER</button>
       <button class="em-filter-knapp" data-filter-typ="hus">HUS</button>
+      <button class="em-filter-knapp active" data-filter-typ="alla">ALLA</button>
     </div>
     {{-- Höger: sortering + sålda --}}
     <div class="em-filter-grupp em-filter-grupp--sort">
@@ -237,13 +252,9 @@ foreach ($listings as $l) {
       var sold = k.getAttribute('data-sold') === '1';
       var visa = true;
 
-      // Sålda-filter har högsta prio
-      if (state.visaSalda) {
-        if (!sold) visa = false;
-      } else {
-        if (sold) visa = false;
-        if (state.typ !== 'alla' && typ !== state.typ) visa = false;
-      }
+      // Sålda och typ kombineras
+      if (state.visaSalda ? !sold : sold) visa = false;
+      if (state.typ !== 'alla' && typ !== state.typ) visa = false;
 
       k.style.display = visa ? '' : 'none';
     });
@@ -277,12 +288,6 @@ foreach ($listings as $l) {
       typBtns.forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
       state.typ = btn.getAttribute('data-filter-typ');
-      // Avaktivera Sålda om typ-filter används
-      if (state.visaSalda) {
-        state.visaSalda = false;
-        var saldBtn = document.querySelector('[data-filter-sald]');
-        if (saldBtn) saldBtn.classList.remove('active');
-      }
       applyFilter();
     });
   });

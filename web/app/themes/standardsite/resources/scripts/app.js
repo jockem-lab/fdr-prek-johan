@@ -470,25 +470,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Till salu-filter
+// Objektlista: forval fran URL (?typ=hus) - filterlogiken bor i page-objekt.blade.php
 document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-knapp');
-    const objekt = document.querySelectorAll('.objekt-kort-inner[data-status]');
-    
-    filterBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            const filter = this.dataset.filter;
-            objekt.forEach(function(o) {
-                if (filter === 'alla' || o.dataset.status === filter) {
-                    o.classList.remove('hidden');
-                } else {
-                    o.classList.add('hidden');
-                }
-            });
-        });
-    });
+  if (!document.getElementById('objekt-grid-page')) return;
+  var urlTyp = new URLSearchParams(window.location.search).get('typ');
+  if (urlTyp === 'hus' || urlTyp === 'lagenhet') {
+    var fBtn = document.querySelector('.em-filter-knapp[data-filter-typ="' + urlTyp + '"]');
+    if (fBtn) fBtn.click();
+  }
 });
 
 // Objektsida hero-slideshow

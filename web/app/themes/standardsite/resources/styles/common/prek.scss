@@ -6803,7 +6803,7 @@ header#site-header.fdr-header {
   width: 100%;
   max-width: none;
   margin: 56px 0 0 0;
-  padding: 0 32px;
+  padding: 0;
   box-sizing: border-box;
 }
 .em-detalj-hero-img {
@@ -8509,11 +8509,7 @@ img.fdr-footer-logo-svg {
 .em-detalj-renovering-dokument,
 .em-detalj-karta-sektion,
 .em-detalj-liknande,
-.em-galleri-expand-inner,
-.fdr-hero,
-.em-hero,
-.fdr-om-hero,
-.em-detalj-hero {
+.em-galleri-expand-inner {
   max-width: 1440px;
   margin-left: auto !important;
   margin-right: auto !important;

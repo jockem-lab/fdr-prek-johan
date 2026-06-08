@@ -5857,11 +5857,10 @@ html, body {
   overflow-x: clip;
 }
 .em-karusell {
-  margin: 136px auto 168px auto;
+  margin: 136px 0 168px calc(50% - 50vw);
   overflow: hidden;
   position: relative;
-  width: 100%;
-  max-width: 1440px;
+  width: 100vw;
   cursor: grab;
   user-select: none;
 }

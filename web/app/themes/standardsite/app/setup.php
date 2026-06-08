@@ -256,26 +256,6 @@ add_action('wp_enqueue_scripts', function () {
 
 
 /**
- * Custom post type: Underhand
- */
-add_action('init', function () {
-    register_post_type('underhand', [
-        'labels' => [
-            'name'          => 'Underhandsobjekt',
-            'singular_name' => 'Underhandsobjekt',
-            'add_new_item'  => 'Lägg till objekt',
-            'edit_item'     => 'Redigera objekt',
-        ],
-        'public'       => false,
-        'show_ui'      => true,
-        'show_in_menu' => true,
-        'supports'     => ['title', 'thumbnail'],
-        'menu_icon'    => 'dashicons-hidden',
-        'has_archive'  => false,
-    ]);
-});
-
-/**
  * Custom post type: Journal
  */
 add_action('init', function () {

@@ -88,7 +88,7 @@
         </div>
         <p class="em-sektion-beskrivning">En del av de bostäder vi förmedlar når aldrig den öppna marknaden, detta i enlighet med våra uppdragsgivares önskemål. ETT MÄKLERI disponerar över ett omfattande kontaktnät och en köpstark databas som ständigt hålls uppdaterad.</p>
       </div>
-      <a href="{{ home_url('/underhand') }}" class="em-sektion-btn">MAILA OSS</a>
+      <a href="mailto:info@ettmakleri.se?subject=Underhand" class="em-sektion-btn">MAILA OSS</a>
     </div>
   </section>
 

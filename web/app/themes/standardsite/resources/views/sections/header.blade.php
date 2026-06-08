@@ -14,7 +14,7 @@
     <nav class="fdr-menu-nav">
       <a href="{{ home_url('/objekt') }}">Lägenheter</a>
       <a href="{{ home_url('/objekt') }}">Hus</a>
-      <a href="{{ home_url('/underhand') }}">Underhand</a>
+      <a href="mailto:info@ettmakleri.se?subject=Underhand">Underhand</a>
       <a href="{{ home_url('/') }}#anlita-form">Anlita oss</a>
       <a href="{{ home_url('/om-oss') }}">Om oss</a>
     </nav>
